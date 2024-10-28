@@ -434,18 +434,18 @@ class ClashSystem {
         this.attackerSelectedOption = null;
         this.defenderSelectedOption = null;
 
-        if (this.attackerClashOptions) {
+        if (Array.isArray(this.attackerClashOptions)) {
             this.attackerClashOptions.forEach(option => {
-                option.box.destroy();
-                option.text.destroy();
+                if (option && option.box) option.box.destroy();
+                if (option && option.text) option.text.destroy();
             });
             this.attackerClashOptions = null;
         }
 
-        if (this.defenderClashOptions) {
+        if (Array.isArray(this.defenderClashOptions)) {
             this.defenderClashOptions.forEach(option => {
-                option.box.destroy();
-                option.text.destroy();
+                if (option && option.box) option.box.destroy();
+                if (option && option.text) option.text.destroy();
             });
             this.defenderClashOptions = null;
         }
@@ -456,8 +456,10 @@ class ClashSystem {
         this.attackerHissatsuOpen = false;
         this.defenderHissatsuOpen = false;
 
-        if (this.clashPlayerInfoTexts) {
-            this.clashPlayerInfoTexts.forEach(text => text.destroy());
+        if (Array.isArray(this.clashPlayerInfoTexts)) {
+            this.clashPlayerInfoTexts.forEach(text => {
+                if (text) text.destroy();
+            });
             this.clashPlayerInfoTexts = null;
         }
 
@@ -468,41 +470,42 @@ class ClashSystem {
     }
 
     setClashUIDepth(depth) {
-        if (this.attackerClashOptions) {
+        if (Array.isArray(this.attackerClashOptions)) {
             this.attackerClashOptions.forEach(option => {
-                option.box.setDepth(depth);
-                option.text.setDepth(depth + 1);
+                if (option && option.box) option.box.setDepth(depth);
+                if (option && option.text) option.text.setDepth(depth + 1);
             });
         }
 
-        if (this.defenderClashOptions) {
+        if (Array.isArray(this.defenderClashOptions)) {
             this.defenderClashOptions.forEach(option => {
-                option.box.setDepth(depth);
-                option.text.setDepth(depth + 1);
+                if (option && option.box) option.box.setDepth(depth);
+                if (option && option.text) option.text.setDepth(depth + 1);
             });
         }
 
-        if (this.clashPlayerInfoTexts) {
-            this.clashPlayerInfoTexts.forEach(text => text.setDepth(depth + 1));
+        if (Array.isArray(this.clashPlayerInfoTexts)) {
+            this.clashPlayerInfoTexts.forEach(text => {
+                if (text) text.setDepth(depth + 1);
+            });
         }
 
-        if (this.attackerHissatsuOptions) {
+        if (Array.isArray(this.attackerHissatsuOptions)) {
             this.attackerHissatsuOptions.forEach(option => {
-                option.box.setDepth(depth + 2);
-                option.text.setDepth(depth + 3);
-                option.tpCost.setDepth(depth + 3);
+                if (option && option.box) option.box.setDepth(depth + 2);
+                if (option && option.text) option.text.setDepth(depth + 3);
+                if (option && option.tpCost) option.tpCost.setDepth(depth + 3);
             });
         }
 
-        if (this.defenderHissatsuOptions) {
+        if (Array.isArray(this.defenderHissatsuOptions)) {
             this.defenderHissatsuOptions.forEach(option => {
-                option.box.setDepth(depth + 2);
-                option.text.setDepth(depth + 3);
-                option.tpCost.setDepth(depth + 3);
+                if (option && option.box) option.box.setDepth(depth + 2);
+                if (option && option.text) option.text.setDepth(depth + 3);
+                if (option && option.tpCost) option.tpCost.setDepth(depth + 3);
             });
         }
     }
-
     displayClashPlayerInfo(homePlayer, awayPlayer) {
         const cameraWidth = this.scene.cameras.main.width;
         const cameraHeight = this.scene.cameras.main.height;
