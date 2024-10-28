@@ -10,7 +10,7 @@ const playerStats = {
         Shoot: 76,
         Speed: 75,
         Keeper: 50,
-        Hissatsu: ['SDash', 'Fire Tornado', 'Inazuma Drop'],
+        Hissatsu: ['SDash', 'FTornado', 'Inazuma Drop'],
         FaceSprite: 'Gouenji_face',
         H_Voice: ''
     },
