@@ -1,6 +1,7 @@
 class ClashSystem {
-    constructor(scene) {
+    constructor(scene, localization) {
         this.scene = scene;
+        this.localization = localization;
         this.clashActive = false;
         this.clashPlayers = {
             attacker: null,
