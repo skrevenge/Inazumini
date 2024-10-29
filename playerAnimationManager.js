@@ -59,28 +59,48 @@ class PlayerAnimationManager {
             console.error('Player, player body, or container is undefined in updatePlayerAnimation');
             return;
         }
-
         const direction = this.getPlayerDirection(player);
-        const isMoving = this.isPlayerMoving(player);
+        const isMoving = this.isPlayerMoving(player) && !this.collideMenuActive;
 
         if (player.isKicking) {
+            // If the player is kicking, maintain the kick frame
             return;
         }
-
         if (isMoving) {
-            this.playRunningAnimation(player, direction);
+            const teamSuffix = player.team === 'home' ? 'home' : 'away';
+            let animationKey;
+            let flipX = false;
+
+            switch(direction) {
+                case 0: animationKey = `run_down_${teamSuffix}`; break;
+                case 1: animationKey = `run_left_${teamSuffix}`; break;
+                case 2: anim ationKey = `run_up_${teamSuffix}`; break;
+                case 3: animationKey = `run_right_${teamSuffix}`; flipX = true; break;
+                case 4: animationKey = `run_up_right_${teamSuffix}`; flipX = true; break;
+                case 5: animationKey = `run_down_right_${teamSuffix}`; flipX = true; break;
+                case 6: animationKey = `run_down_left_${teamSuffix}`; break;
+                case 7: animationKey = `run_up_left_${teamSuffix}`; break;
+                default: animationKey = `run_down_${teamSuffix}`; // Default to down animation
+            }
+
+            player.body.play(animationKey, true);
+            player.body.setFlipX(flipX);
         } else {
+            // Use static frames when not moving
             this.setStaticTexture(player, direction);
         }
-
+        
         player.face.setFrame(direction);
         this.updateFacePosition(player, direction);
         player.lastDirection = direction;
-
+        
         // Adjust depth when player is facing or moving upwards
-        player.container.setDepth((direction === 2 || direction === 4 || direction === 7) ? 3 : 1);
+        if (direction === 2 || direction === 4 || direction === 7) {
+            player.container.setDepth(this.ballContainer.depth + 1);
+        } else {
+            player.container.setDepth(1); // Reset to default depth
+        }
     }
-
     playRunningAnimation(player, direction) {
         const teamSuffix = player.team === 'home' ? 'home' : 'away';
         const animKey = this.getRunningAnimationKey(direction, teamSuffix);
