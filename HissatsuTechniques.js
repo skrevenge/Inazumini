@@ -34,43 +34,19 @@ class HissatsuTechniques {
     }
 
     getAllTechniques() {
-        return { ...this.techniques };
+        return this.techniques;
     }
 
     addTechnique(technique) {
-        if (technique && technique.ID) {
+        if (technique.ID) {
             this.techniques[technique.ID] = technique;
-            return true;
         }
-        return false;
-    }
-
-    removeTechnique(id) {
-        if (this.techniques[id]) {
-            delete this.techniques[id];
-            return true;
-        }
-        return false;
-    }
-
-    updateTechnique(id, updates) {
-        if (this.techniques[id]) {
-            this.techniques[id] = { ...this.techniques[id], ...updates };
-            return true;
-        }
-        return false;
-    }
-
-    getTechniquesByType(type) {
-        return Object.values(this.techniques).filter(tech => tech.Type === type);
-    }
-
-    getTechniquesByPowerRange(minPower, maxPower) {
-        return Object.values(this.techniques).filter(tech => 
-            tech.Power >= minPower && tech.Power <= maxPower
-        );
     }
 }
 
 // Export the class for use in other modules
-export default HissatsuTechniques;
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports = HissatsuTechniques;
+} else {
+    window.HissatsuTechniques = HissatsuTechniques;
+}
