@@ -34,23 +34,41 @@ class HissatsuTechniques {
     }
 
     getAllTechniques() {
-        return this.techniques;
+        return { ...this.techniques };
     }
 
     addTechnique(technique) {
-        if (technique.ID) {
+        if (technique && technique.ID) {
             this.techniques[technique.ID] = technique;
-        } else {
-            console.error('Technique must have an ID');
+            return true;
         }
+        return false;
     }
 
     removeTechnique(id) {
         if (this.techniques[id]) {
             delete this.techniques[id];
-        } else {
-            console.error(`Technique with ID ${id} not found`);
+            return true;
         }
+        return false;
+    }
+
+    updateTechnique(id, updates) {
+        if (this.techniques[id]) {
+            this.techniques[id] = { ...this.techniques[id], ...updates };
+            return true;
+        }
+        return false;
+    }
+
+    getTechniquesByType(type) {
+        return Object.values(this.techniques).filter(tech => tech.Type === type);
+    }
+
+    getTechniquesByPowerRange(minPower, maxPower) {
+        return Object.values(this.techniques).filter(tech => 
+            tech.Power >= minPower && tech.Power <= maxPower
+        );
     }
 }
 
