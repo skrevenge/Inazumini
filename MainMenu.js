@@ -198,5 +198,7 @@ class MainMenu {
         }
         this.menuGroup = this.scene.add.group();
     }
-    }
+    
 }
+
+window.MainMenu = MainMenu;
