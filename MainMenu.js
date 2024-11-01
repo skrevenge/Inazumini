@@ -1,9 +1,10 @@
 class MainMenu {
-    constructor(scene) {
+    constructor(scene, localization) {
         this.scene = scene;
         this.menuGroup = null;
         this.language = null;
         this.nameStyle = null;
+        this.localization = localization;
     }
 
     createButtonContainer(x, y, text, width, height) {
@@ -99,7 +100,7 @@ class MainMenu {
         this.menuGroup = this.scene.add.group();
         const background = this.scene.add.image(400, 300, 'menu_bg');
         background.setDisplaySize(800, 600);
-        const text = this.scene.add.text(400, 100, this.scene.localization[this.language || 'en']['MenuOption_ChooseNameStyle'], {
+        const text = this.scene.add.text(400, 100, this.localization[this.language || 'en']['MenuOption_ChooseNameStyle'], {
             fontSize: '32px',
             fill: '#fff',
             stroke: '#000',
@@ -111,8 +112,8 @@ class MainMenu {
         text.setLineSpacing(10);
         const buttonWidth = 300;
         const buttonHeight = 60;
-        const dubButton = this.createButtonContainer(400, 250, this.scene.localization[this.language || 'en']['MenuOption_DubNames'], buttonWidth, buttonHeight);
-        const undubButton = this.createButtonContainer(400, 350, this.scene.localization[this.language || 'en']['MenuOption_UndubNames'], buttonWidth, buttonHeight);
+        const dubButton = this.createButtonContainer(400, 250, this.localization[this.language || 'en']['MenuOption_DubNames'], buttonWidth, buttonHeight);
+        const undubButton = this.createButtonContainer(400, 350, this.localization[this.language || 'en']['MenuOption_UndubNames'], buttonWidth, buttonHeight);
         this.menuGroup.add(background);
         this.menuGroup.add(text);
         this.menuGroup.add(dubButton);
