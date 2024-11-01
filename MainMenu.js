@@ -1,12 +1,11 @@
 class MainMenu {
     constructor(scene) {
         this.scene = scene;
-        this.menuGroup = null;
+        this.menuGroup = this.scene.add.group();
     }
 
     chooseLanguage() {
         this.clearMenu();
-        this.menuGroup = this.scene.add.group();
 
         const background = this.scene.add.image(400, 300, 'menu_bg');
         background.setDisplaySize(800, 600);
@@ -49,7 +48,6 @@ class MainMenu {
 
     chooseNameStyle() {
         this.clearMenu();
-        this.menuGroup = this.scene.add.group();
 
         const background = this.scene.add.image(400, 300, 'menu_bg');
         background.setDisplaySize(800, 600);
@@ -196,6 +194,9 @@ class MainMenu {
     clearMenu() {
         if (this.menuGroup) {
             this.menuGroup.clear(true, true);
+            this.menuGroup.destroy();
         }
+        this.menuGroup = this.scene.add.group();
+    }
     }
 }
