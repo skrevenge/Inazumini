@@ -10,7 +10,7 @@ const playerStats = {
         Shoot: 76,
         Speed: 75,
         Keeper: 50,
-        Hissatsu: ['SDash', 'FTornado', 'Inazuma Drop'],
+        Hissatsu: ['SDash', 'FTornado', 'Ina1Go'],
         FaceSprite: 'Gouenji_face',
         H_Voice: ''
     },
@@ -25,7 +25,7 @@ const playerStats = {
         Shoot: 59,
         Speed: 75,
         Keeper: 50,
-        Hissatsu: ['SDash', 'Clone Defense'],
+        Hissatsu: ['SDash', 'BDefense'],
         FaceSprite: 'Kazemaru_face',
         H_Voice: ''
     },
@@ -40,7 +40,7 @@ const playerStats = {
         Shoot: 56,
         Speed: 60,
         Keeper: 68,
-        Hissatsu: ['SDash', 'The Wall', 'Rock Wall Dam'],
+        Hissatsu: ['SDash', 'TWall', 'RWDam'],
         FaceSprite: 'kabeyama_face',
         H_Voice: ''
     },
@@ -55,7 +55,7 @@ const playerStats = {
         Shoot: 72,
         Speed: 73,
         Keeper: 55,
-        Hissatsu: ['SDash', 'Illusion Ball', 'Emperor Penguin'],
+        Hissatsu: ['SDash', 'IBall', 'KPenguin2'],
         FaceSprite: 'kidou_face',
         H_Voice: ''
     },
@@ -70,7 +70,7 @@ const playerStats = {
         Shoot: 60,
         Speed: 75,
         Keeper: 88,
-        Hissatsu: ['SDash', 'God Hand', 'Majin The Hand'],
+        Hissatsu: ['SDash', 'GHand', 'MajinTH'],
         FaceSprite: 'endo_face',
         H_Voice: ''
     },
@@ -85,7 +85,7 @@ const playerStats = {
         Shoot: 78,
         Speed: 82,
         Keeper: 60,
-        Hissatsu: ['SDash', 'Ryuusei Blade', 'Supernova'],
+        Hissatsu: ['SDash', 'RBlade', 'Supernova'],
         FaceSprite: 'Xene_face',
         H_Voice: ''
     },
@@ -100,7 +100,7 @@ const playerStats = {
         Shoot: 77,
         Speed: 78,
         Keeper: 55,
-        Hissatsu: ['SDash', 'Heaven\'s Time', 'God Knows'],
+        Hissatsu: ['SDash', 'HTime', 'GKnows'],
         FaceSprite: 'Afuro_face',
         H_Voice: ''
     },
@@ -115,7 +115,7 @@ const playerStats = {
         Shoot: 74,
         Speed: 72,
         Keeper: 52,
-        Hissatsu: ['SDash', 'Koutei Penguin 2gou', 'Tsunami Wall'],
+        Hissatsu: ['SDash', 'KPenguin2', 'KSlide'],
         FaceSprite: 'sakuma_face',
         H_Voice: ''
     },
@@ -130,7 +130,7 @@ const playerStats = {
         Shoot: 79,
         Speed: 74,
         Keeper: 65,
-        Hissatsu: ['SDash', 'Eternal Blizzard', 'Wolf Legend'],
+        Hissatsu: ['SDash', 'EternalB', 'IceG'],
         FaceSprite: 'Shirou_face',
         H_Voice: ''
     },
@@ -145,7 +145,7 @@ const playerStats = {
         Shoot: 65,
         Speed: 70,
         Keeper: 85,
-        Hissatsu: ['SDash', 'Beast Fang', 'Million Hands'],
+        Hissatsu: ['SDash', 'BeastF', 'FPShield'],
         FaceSprite: 'Genda_face',
         H_Voice: ''
     }
