@@ -1,10 +1,12 @@
 class PlayerMovementManager {
-    constructor(scene) {
+    constructor(scene, playerSpritePositioner, animationManager) {
         this.scene = scene;
+        this.playerSpritePositioner = playerSpritePositioner;
+        this.animationManager = animationManager;
     }
 
     movePlayer(player, velocityX, velocityY) {
-        if (player.isPassingBall || player.isStunned) {
+        if (player.isPassingBall || this.scene.collideMenuActive || player.isStunned) {
             player.container.body.setVelocity(0, 0);
             this.stopPlayer(player, player.lastDirection);
             return {
@@ -62,15 +64,17 @@ class PlayerMovementManager {
         }
 
         const direction = this.getPlayerDirection(player);
-        const isMoving = this.isPlayerMoving(player);
-        this.scene.animationManager.updatePlayerAnimation(player, isMoving, direction);
+        const isMoving = this.isPlayerMoving(player) && !this.scene.collideMenuActive;
+
+        this.animationManager.updatePlayerAnimation(player, isMoving, direction);
         this.updateFacePosition(player, direction);
+
         player.lastDirection = direction;
 
         // Adjust player depth based on Y position
         this.updatePlayerDepth(player);
 
-        // Update the player's shadow after the animation
+        // Update player shadow after animation
         this.updatePlayerShadow(player);
     }
 
@@ -105,19 +109,19 @@ class PlayerMovementManager {
     }
 
     stopPlayer(player, direction) {
-        this.scene.animationManager.stopPlayerAnimation(player);
-        this.scene.animationManager.setStaticTexture(player, direction);
+        this.animationManager.stopPlayerAnimation(player);
+        this.animationManager.setStaticTexture(player, direction);
         console.log(`Player ${player.name} stopped, Direction: ${direction}`);
     }
 
     updateFacePosition(player, direction) {
-        if (!this.scene.playerSpritePositioner) {
+        if (!this.playerSpritePositioner) {
             console.error('PlayerSpritePositioner is not initialized.');
             return;
         }
 
         const isMoving = this.isPlayerMoving(player);
-        const { x: faceOffsetX, y: faceOffsetY } = this.scene.playerSpritePositioner.updateFacePosition(player, direction, isMoving);
+        const { x: faceOffsetX, y: faceOffsetY } = this.playerSpritePositioner.updateFacePosition(player, direction, isMoving);
         player.face.setPosition(faceOffsetX, faceOffsetY);
     }
 
@@ -137,12 +141,10 @@ class PlayerMovementManager {
             player.shadow.setPosition(0, shadowOffsetY);
             player.shadowContainer.setPosition(player.container.x, player.container.y);
 
-            // Show shadow if the player is visible and either not in animation or specifically involved in the current animation
             const shouldShowShadow = player.container.visible && (player.isInAnimation || !this.isPlayerInAnimation(player));
             player.shadow.setVisible(shouldShowShadow);
             player.shadowContainer.setVisible(shouldShowShadow);
 
-            // Always set shadow depth to be slightly less than the player's depth
             player.shadowContainer.setDepth(player.container.y - 0.1);
         } else {
             console.error(`Shadow or shadow container is still undefined for player ${player.name}`);
@@ -162,8 +164,8 @@ class PlayerMovementManager {
         console.log(`Created new shadow for player ${player.name}`);
     }
 
-    updateAllPlayerShadows() {
-        this.scene.allPlayers.forEach(player => {
+    updateAllPlayerShadows(players) {
+        players.forEach(player => {
             this.updatePlayerShadow(player);
         });
     }
