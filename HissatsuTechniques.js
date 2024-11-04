@@ -6,7 +6,7 @@ class HissatsuTechniques {
                 Name: 'Wind Dash',
                 Undub_Name: 'Shippu Dash',
                 Local_Name: 'Deslize Veloz',
-                TP_Cost: 30,
+                TP_Cost: 90,
                 Power: 150,
                 Type: 'Dribble',
                 Animation: '',
