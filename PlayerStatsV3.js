@@ -182,7 +182,7 @@ class PlayerStats {
                 CpuRankURHst: ['God Hand', 'Majin The Hand', 'Fist of Justice'],
                 CpuRankLHst: ['God Hand', 'Majin The Hand', 'Fist of Justice', 'Hammer of Wrath']
             }),
-          'nathan02': new PlayerStats.Character({
+          'nathan01': new PlayerStats.Character({
                 name: 'Nathan Swift',
                 undubName: 'Kazemaru Ichirouta',
                 TP: 160,
@@ -273,5 +273,4 @@ class PlayerStats {
     getCurrentTeam() {
         return this.currentTeam;
     }
-}
 }
