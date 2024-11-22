@@ -275,7 +275,6 @@ addPlayer(key, level) {
     }
 
 initializeDefaultPlayers() {
-    // Array de jogadores padrões com suas chaves e níveis iniciais
     const defaultPlayers = [
         { key: 'markEvans', level: 4 },
         { key: 'nathanSwift', level: 3 },
@@ -285,20 +284,26 @@ initializeDefaultPlayers() {
         { key: 'kevinDragonfly', level: 2 }
     ];
 
-    // Adiciona cada jogador usando a chave correta
     defaultPlayers.forEach(player => {
-        const stats = this.initializePlayerStats()[player.key]; // Busca o jogador pelo key
+        const stats = this.initializePlayerStats()[player.key];
         if (stats) {
-            this.addPlayer(player.key, player.level); // Adiciona ao sistema de players
+            this.addPlayer(player.key, player.level); 
+            // Aplica os boosts para níveis acima de 1
+            for (let level = 2; level <= player.level; level++) {
+                this.applyBoosts(player.key);
+            }
         } else {
             console.error(`Jogador com a chave '${player.key}' não encontrado!`);
         }
     });
 }
 
-    applyBoosts(playerName) {
+
+applyBoosts(playerName) {
     const player = this.players[playerName];
     if (!player) return;
+
+    console.log(`Aplicando boost para ${playerName} no nível ${player.level}`);
 
     const charData = this.initializePlayerStats()[playerName];
     if (!charData || !charData.LvUpBoost) return;
@@ -306,21 +311,19 @@ initializeDefaultPlayers() {
     const boosts = Object.values(charData.LvUpBoost);
     const level = player.level;
 
-    // Aplicar boost apenas a partir do nível 2
     if (level > 1) {
-        const boostIndex = (level - 2) % boosts.length; // Nível 2 começa com boost 1 (índice 0)
+        const boostIndex = (level - 2) % boosts.length;
         const currentBoost = boosts[boostIndex];
 
         const [TP, FP, shoot, dribble, speed, strength, keeper] = currentBoost;
 
-        // Incrementa os atributos com base no boost atual
+        player.TP += TP;
+        player.FP += FP;
         player.shoot += shoot;
         player.dribble += dribble;
         player.speed += speed;
         player.strength += strength;
         player.keeper += keeper;
-        player.TP += TP;
-        player.FP += FP;
 
         console.log(
             `Jogador ${playerName} recebeu o boost ${boostIndex + 1}:`,
