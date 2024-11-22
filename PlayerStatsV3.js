@@ -45,21 +45,6 @@ class PlayerStats {
             this.RankUpBoost = config.RankUpBoost || {};
         }
     }
-
-    initializeDefaultPlayers() {
-    const defaultPlayers = [
-        { name: 'markEvans', level: 4 },
-        { name: 'nathanSwift', level: 3 },
-        { name: 'nathan01', level: 3 },
-        { name: 'mark01', level: 4 },
-        { name: 'nathan02', level: 2 },
-        { name: 'mark02', level: 2 }
-    ];
-
-    defaultPlayers.forEach(player => {
-        this.addPlayer(player.name, player.level);
-    });
-}
     
     initializePlayerStats() {
         return {
@@ -275,6 +260,21 @@ class PlayerStats {
             }),
             // Add more players here as needed
         };
+    }
+
+    initializeDefaultPlayers() {
+        const defaultPlayers = [
+            { name: 'markEvans', level: 4 },
+            { name: 'nathanSwift', level: 3 },
+            { name: 'nathan01', level: 3 },
+            { name: 'mark01', level: 4 },
+            { name: 'nathan02', level: 2 },
+            { name: 'mark02', level: 2 }
+        ];
+
+        defaultPlayers.forEach(player => {
+            this.addPlayer(player.name, player.level);
+        });
     }
 
     getAllPlayers() {
