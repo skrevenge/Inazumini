@@ -124,9 +124,9 @@ class PlayerStats {
                 CpuRankURHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense'],
                 CpuRankLHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense', 'Fuujin no Mai']
             }),
-            'mark01': new PlayerStats.Character({
-                name: 'Mark Evans',
-                undubName: 'Mamoru Endou',
+            'axelBlaze': new PlayerStats.Character({
+                name: 'Axel Blaze',
+                undubName: 'Shuuya Gouenji',
                 TP: 180,
                 FP: 170,
                 attribute: 'Earth',
@@ -159,9 +159,9 @@ class PlayerStats {
                 CpuRankURHst: ['God Hand', 'Majin The Hand', 'Fist of Justice'],
                 CpuRankLHst: ['God Hand', 'Majin The Hand', 'Fist of Justice', 'Hammer of Wrath']
             }),
-           'mark02': new PlayerStats.Character({
-                name: 'Mark Evans',
-                undubName: 'Mamoru Endou',
+           'jackWallside': new PlayerStats.Character({
+                name: 'Jack Wallside',
+                undubName: 'Heigoro Kabeyama',
                 TP: 180,
                 FP: 170,
                 attribute: 'Earth',
@@ -194,9 +194,9 @@ class PlayerStats {
                 CpuRankURHst: ['God Hand', 'Majin The Hand', 'Fist of Justice'],
                 CpuRankLHst: ['God Hand', 'Majin The Hand', 'Fist of Justice', 'Hammer of Wrath']
             }),
-          'nathan01': new PlayerStats.Character({
-                name: 'Nathan Swift',
-                undubName: 'Kazemaru Ichirouta',
+          'todIronside': new PlayerStats.Character({
+                name: 'Tod Ironside',
+                undubName: 'Teppei Kurimatsu',
                 TP: 160,
                 FP: 180,
                 attribute: 'Wind',
@@ -229,9 +229,9 @@ class PlayerStats {
                 CpuRankURHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense'],
                 CpuRankLHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense', 'Fuujin no Mai']
             }),
-          'nathan02': new PlayerStats.Character({
-                name: 'Nathan Swift',
-                undubName: 'Kazemaru Ichirouta',
+          'kevinDragonfly': new PlayerStats.Character({
+                name: 'Kevin Dragonfly',
+                undubName: 'Ryugo Someoka',
                 TP: 160,
                 FP: 180,
                 attribute: 'Wind',
@@ -273,10 +273,10 @@ initializeDefaultPlayers() {
     const defaultPlayers = [
         { key: 'markEvans', level: 4 },
         { key: 'nathanSwift', level: 3 },
-        { key: 'nathan01', level: 3 },
-        { key: 'mark01', level: 4 },
-        { key: 'nathan02', level: 2 },
-        { key: 'mark02', level: 2 }
+        { key: 'axelBlaze', level: 3 },
+        { key: 'jackWallside', level: 4 },
+        { key: 'todIronside', level: 2 },
+        { key: 'kevinDragonfly', level: 2 }
     ];
 
     // Adiciona cada jogador usando a chave correta
