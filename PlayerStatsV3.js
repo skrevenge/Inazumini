@@ -291,8 +291,8 @@ initializeDefaultPlayers() {
             // Aplica boosts para níveis acima do 1
             for (let level = 2; level <= player.level; level++) {
                 this.applyBoosts(player.key); // Aplica os boosts
-                this.players[player.key].level++; // Incrementa o nível manualmente
             }
+            this.players[player.key].level = player.level; // Ajusta o nível final
         } else {
             console.error(`Jogador com a chave '${player.key}' não encontrado!`);
         }
