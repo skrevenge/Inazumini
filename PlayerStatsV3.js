@@ -307,8 +307,6 @@ applyBoosts(playerName) {
     const player = this.players[playerName];
     if (!player) return;
 
-    console.log(`Aplicando boost para ${playerName} no nível ${player.level}`);
-
     const charData = this.initializePlayerStats()[playerName];
     if (!charData || !charData.LvUpBoost) return;
 
@@ -329,10 +327,6 @@ applyBoosts(playerName) {
         player.strength += strength;
         player.keeper += keeper;
 
-        console.log(
-            `Jogador ${playerName} recebeu o boost ${boostIndex + 1}:`,
-            currentBoost
-        );
     }
 }
 
@@ -341,7 +335,6 @@ applyBoosts(playerName) {
     if (!player) return;
 
     player.level++; // Incrementa o nível do jogador
-    console.log(`Jogador ${playerName} subiu para o nível ${player.level}!`);
 
     this.applyBoosts(playerName); // Aplica os boosts correspondentes
 }
