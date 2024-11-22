@@ -4,17 +4,23 @@ class PlayerStats {
         this.characterStats = this.initializePlayerStats(); // Armazena as definições de personagens
     }
 
-    addPlayer(key, level) {
-        if (this.characterStats[key]) {
-            const character = this.characterStats[key];
-            this.players[key] = {
-                ...character,
-                level: level
-            };
-        } else {
-            console.warn(`Character with key "${key}" not found.`);
+addPlayer(key, level) {
+    if (this.characterStats[key]) {
+        const character = this.characterStats[key];
+        this.players[key] = {
+            ...character,
+            level: level
+        };
+
+        // Aplica os boosts iniciais com base no nível informado
+        for (let i = 1; i < level; i++) {
+            this.applyBoosts(key);
         }
+    } else {
+        console.warn(`Character with key "${key}" not found.`);
     }
+}
+
 
     static Character = class {
         constructor(config) {
