@@ -128,16 +128,28 @@ class PlayerStats {
         };
     }
 
-    initializeDefaultPlayers() {
-        const defaultPlayers = [
-            { key: 'markEvans', level: 4 },
-            { key: 'nathanSwift', level: 3 }
-        ];
+initializeDefaultPlayers() {
+    // Array de jogadores padrões com suas chaves e níveis iniciais
+    const defaultPlayers = [
+        { key: 'markEvans', level: 4 },
+        { key: 'nathanSwift', level: 3 },
+        { key: 'nathan01', level: 3 },
+        { key: 'mark01', level: 4 },
+        { key: 'nathan02', level: 2 },
+        { key: 'mark02', level: 2 }
+    ];
 
-        defaultPlayers.forEach(player => {
-            this.addPlayer(player.key, player.level);
-        });
-    }
+    // Adiciona cada jogador usando a chave correta
+    defaultPlayers.forEach(player => {
+        const stats = this.initializePlayerStats()[player.key]; // Busca o jogador pelo key
+        if (stats) {
+            this.addPlayer(player.key, player.level); // Adiciona ao sistema de players
+        } else {
+            console.error(`Jogador com a chave '${player.key}' não encontrado!`);
+        }
+    });
+}
+
 
     getAllPlayers() {
         return Object.keys(this.players);
