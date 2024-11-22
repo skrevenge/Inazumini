@@ -1,7 +1,13 @@
 class PlayerStats {
     constructor() {
-        this.players = this.initializePlayerStats();
-        this.currentTeam = [];
+        this.players = {};
+    }
+
+    addPlayer(name, level) {
+        this.players[name] = {
+            name: name,
+            level: level
+        };
     }
 
     static Character = class {
@@ -285,7 +291,4 @@ class PlayerStats {
         }
     }
 
-    getCurrentTeam() {
-        return this.currentTeam;
-    }
 }
