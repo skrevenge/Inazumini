@@ -311,7 +311,7 @@ initializeDefaultPlayers() {
         const boostIndex = (level - 2) % boosts.length; // Nível 2 começa com boost 1 (índice 0)
         const currentBoost = boosts[boostIndex];
 
-        const [shoot, dribble, speed, strength, keeper, TP, FP] = currentBoost;
+        const [TP, FP, shoot, dribble, speed, strength, keeper] = currentBoost;
 
         // Incrementa os atributos com base no boost atual
         player.shoot += shoot;
