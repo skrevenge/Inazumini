@@ -287,16 +287,18 @@ initializeDefaultPlayers() {
     defaultPlayers.forEach(player => {
         const stats = this.initializePlayerStats()[player.key];
         if (stats) {
-            this.addPlayer(player.key, player.level); 
-            // Aplica os boosts para níveis acima de 1
+            this.addPlayer(player.key, 1); // Adiciona no nível 1 com status base
+            // Aplica boosts para níveis acima do 1
             for (let level = 2; level <= player.level; level++) {
-                this.applyBoosts(player.key);
+                this.applyBoosts(player.key); // Aplica os boosts
+                this.players[player.key].level++; // Incrementa o nível manualmente
             }
         } else {
             console.error(`Jogador com a chave '${player.key}' não encontrado!`);
         }
     });
 }
+
 
 
 applyBoosts(playerName) {
