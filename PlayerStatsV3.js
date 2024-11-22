@@ -290,6 +290,49 @@ initializeDefaultPlayers() {
     });
 }
 
+    applyBoosts(playerName) {
+    const player = this.players[playerName];
+    if (!player) return;
+
+    const charData = this.initializePlayerStats()[playerName];
+    if (!charData || !charData.LvUpBoost) return;
+
+    const boosts = Object.values(charData.LvUpBoost);
+    const level = player.level;
+
+    // Aplicar boost apenas a partir do nível 2
+    if (level > 1) {
+        const boostIndex = (level - 2) % boosts.length; // Nível 2 começa com boost 1 (índice 0)
+        const currentBoost = boosts[boostIndex];
+
+        const [shoot, dribble, speed, strength, keeper, TP, FP] = currentBoost;
+
+        // Incrementa os atributos com base no boost atual
+        player.shoot += shoot;
+        player.dribble += dribble;
+        player.speed += speed;
+        player.strength += strength;
+        player.keeper += keeper;
+        player.TP += TP;
+        player.FP += FP;
+
+        console.log(
+            `Jogador ${playerName} recebeu o boost ${boostIndex + 1}:`,
+            currentBoost
+        );
+    }
+}
+
+    levelUp(playerName) {
+    const player = this.players[playerName];
+    if (!player) return;
+
+    player.level++; // Incrementa o nível do jogador
+    console.log(`Jogador ${playerName} subiu para o nível ${player.level}!`);
+
+    this.applyBoosts(playerName); // Aplica os boosts correspondentes
+}
+
 
     getAllPlayers() {
         return Object.keys(this.players);
