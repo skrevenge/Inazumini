@@ -277,18 +277,12 @@ class PlayerStats {
         };
     }
 
-    getPlayerStats(playerName) {
-        return this.players[playerName];
-    }
-
     getAllPlayers() {
         return Object.keys(this.players);
     }
 
-    addToCurrentTeam(player) {
-        if (!this.currentTeam.includes(player)) {
-            this.currentTeam.push(player);
-        }
+    getPlayerStats(playerName) {
+        return this.players[playerName];
     }
 
 }
