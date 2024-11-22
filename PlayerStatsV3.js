@@ -1,6 +1,7 @@
 class PlayerStats {
     constructor() {
         this.players = this.initializePlayerStats();
+        this.currentTeam = [];
     }
 
     static Character = class {
@@ -262,4 +263,15 @@ class PlayerStats {
     getAllPlayers() {
         return Object.keys(this.players);
     }
+
+    addToCurrentTeam(player) {
+        if (!this.currentTeam.includes(player)) {
+            this.currentTeam.push(player);
+        }
+    }
+
+    getCurrentTeam() {
+        return this.currentTeam;
+    }
+}
 }
