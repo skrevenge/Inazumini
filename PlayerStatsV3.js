@@ -3,14 +3,16 @@ class PlayerStats {
         this.players = {};
         this.characterStats = this.initializePlayerStats(); // Armazena as definições de personagens
         this.activePlayers = []; // Add this line to store active players
+        this.rarityRanks = ['Normal', 'Rare', 'Super Rare', 'Ultra Rare', 'Legend'];
     }
 
-addPlayer(key, level) {
+addPlayer(key, level, rarity = 'Normal') {
     if (this.characterStats[key]) {
         const character = this.characterStats[key];
         this.players[key] = {
             ...character,
-            level: level
+            level: level,
+            rarity: rarity
         };
 
         // Aplica os boosts iniciais com base no nível informado
@@ -280,19 +282,19 @@ addPlayer(key, level) {
 
 initializeDefaultPlayers() {
     const defaultPlayers = [
-        { key: 'markEvans', level: 4 },
-        { key: 'nathanSwift', level: 3 },
-        { key: 'axelBlaze', level: 3 },
-        { key: 'jackWallside', level: 4 },
-        { key: 'todIronside', level: 2 },
-        { key: 'kevinDragonfly', level: 2 }
+        { key: 'markEvans', level: 4, rarity: 'Rare' },
+        { key: 'nathanSwift', level: 3, rarity: 'Rare' },
+        { key: 'axelBlaze', level: 3, rarity: 'Normal' },
+        { key: 'jackWallside', level: 4, rarity: 'Normal' },
+        { key: 'todIronside', level: 2, rarity: 'Normal' },
+        { key: 'kevinDragonfly', level: 2, rarity: 'Normal' }
     ];
 
     defaultPlayers.forEach(player => {
         const stats = this.initializePlayerStats()[player.key];
         if (stats) {
-            // Inicializa o jogador no nível 1 com os status base
-            this.addPlayer(player.key, 1);
+            // Inicializa o jogador no nível 1 com os status base e raridade especificada
+            this.addPlayer(player.key, 1, player.rarity);
 
             // Atualiza os boosts do jogador até o nível inicial desejado
             for (let level = 2; level <= player.level; level++) {
