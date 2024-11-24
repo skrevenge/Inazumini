@@ -2,6 +2,7 @@ class PlayerStats {
     constructor() {
         this.players = {};
         this.characterStats = this.initializePlayerStats(); // Armazena as definições de personagens
+        this.activePlayers = []; // Add this line to store active players
     }
 
 addPlayer(key, level) {
