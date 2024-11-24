@@ -21,6 +21,9 @@ addPlayer(key, level) {
     }
 }
 
+    updateActivePlayers(newActivePlayerKeys) {
+    this.activePlayers = newActivePlayerKeys.slice(0, 6);  // Limit to 6 players
+}
 
     static Character = class {
         constructor(config) {
