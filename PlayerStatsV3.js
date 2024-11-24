@@ -15,10 +15,13 @@ addPlayer(key, level, rarity = 'Normal') {
             rarity: rarity
         };
 
-        // Aplica os boosts iniciais com base no nível informado
+        // Apply initial boosts based on the provided level
         for (let i = 1; i < level; i++) {
             this.applyBoosts(key);
         }
+
+        // Ensure rarity is set correctly after boosts
+        this.players[key].rarity = rarity;
     } else {
         console.warn(`Character with key "${key}" not found.`);
     }
@@ -293,18 +296,24 @@ initializeDefaultPlayers() {
     defaultPlayers.forEach(player => {
         const stats = this.initializePlayerStats()[player.key];
         if (stats) {
-            // Inicializa o jogador no nível 1 com os status base e raridade especificada
+            // Initialize the player with level 1 and specified rarity
             this.addPlayer(player.key, 1, player.rarity);
 
-            // Atualiza os boosts do jogador até o nível inicial desejado
+            // Update player's level and apply boosts
             for (let level = 2; level <= player.level; level++) {
-                this.players[player.key].level = level; // Ajusta o nível do jogador
-                this.applyBoosts(player.key); // Aplica o boost correspondente
+                this.players[player.key].level = level;
+                this.applyBoosts(player.key);
             }
+
+            // Ensure the rarity is set correctly after all boosts are applied
+            this.players[player.key].rarity = player.rarity;
         } else {
             console.error(`Jogador com a chave '${player.key}' não encontrado!`);
         }
     });
+
+    // Set initial active players
+    this.activePlayers = defaultPlayers.map(player => player.key);
 }
 
 
