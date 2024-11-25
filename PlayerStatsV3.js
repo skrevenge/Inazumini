@@ -12,7 +12,14 @@ addPlayer(key, level, rarity = 'Normal') {
         this.players[key] = {
             ...character,
             level: 1,
-            rarity: 'Normal'
+            rarity: 'Normal',
+            TP: character.TP || 0,
+            FP: character.FP || 0,
+            shoot: character.shoot || 0,
+            dribble: character.dribble || 0,
+            speed: character.speed || 0,
+            strength: character.strength || 0,
+            keeper: character.keeper || 0
         };
 
         // Apply level boosts
@@ -32,32 +39,32 @@ addPlayer(key, level, rarity = 'Normal') {
 }
 
     applyRarityBuffs(playerKey, targetRarity) {
-    const player = this.players[playerKey];
-    if (!player) return;
+        const player = this.players[playerKey];
+        if (!player) return;
 
-    const rarityOrder = ['Normal', 'Rare', 'Super Rare', 'Ultra Rare', 'Legend'];
-    const startIndex = rarityOrder.indexOf(player.rarity);
-    const endIndex = rarityOrder.indexOf(targetRarity);
+        const rarityOrder = ['Normal', 'Rare', 'Super Rare', 'Ultra Rare', 'Legend'];
+        const startIndex = rarityOrder.indexOf(player.rarity);
+        const endIndex = rarityOrder.indexOf(targetRarity);
 
-    for (let i = startIndex + 1; i <= endIndex; i++) {
-        const currentRarity = rarityOrder[i];
-        const boostKey = `Rank${currentRarity.replace(' ', '')}`;
-        const boosts = player.RankUpBoost[boostKey];
-        
-        if (boosts) {
-            const [TP, FP, shoot, dribble, speed, strength, keeper] = boosts;
-            player.TP += TP;
-            player.FP += FP;
-            player.shoot += shoot;
-            player.dribble += dribble;
-            player.speed += speed;
-            player.strength += strength;
-            player.keeper += keeper;
+        for (let i = startIndex + 1; i <= endIndex; i++) {
+            const currentRarity = rarityOrder[i];
+            const boostKey = `Rank${currentRarity.replace(' ', '')}`;
+            const boosts = player.RankUpBoost[boostKey];
+            
+            if (boosts) {
+                const [TP, FP, shoot, dribble, speed, strength, keeper] = boosts;
+                player.TP += TP || 0;
+                player.FP += FP || 0;
+                player.shoot += shoot || 0;
+                player.dribble += dribble || 0;
+                player.speed += speed || 0;
+                player.strength += strength || 0;
+                player.keeper += keeper || 0;
+            }
         }
-    }
 
-    player.rarity = targetRarity;
-}
+        player.rarity = targetRarity;
+    }
     
     updateActivePlayers(newActivePlayerKeys) {
     this.activePlayers = newActivePlayerKeys.slice(0, 6);  // Limit to 6 players
