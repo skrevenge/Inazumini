@@ -45,7 +45,7 @@ addPlayer(key, level, rarity = 'Normal') {
         const boosts = player.RankUpBoost[boostKey];
         
         if (boosts) {
-            const [TP, FP, shoot, dribble, speed, strenght, keeper] = boosts;
+            const [TP, FP, shoot, dribble, speed, strength, keeper] = boosts;
             player.TP += TP;
             player.FP += FP;
             player.shoot += shoot;
