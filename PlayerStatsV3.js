@@ -23,7 +23,7 @@ addPlayer(key, level, rarity = 'Normal') {
         };
 
         // Apply level boosts
-        for (let i = 1; i <= level; i++) {
+        for (let i = 2; i <= level; i++) {
             this.applyBoosts(key);
         }
 
