@@ -23,7 +23,7 @@ addPlayer(key, level, rarity = 'Normal') {
         };
 
         // Apply level boosts
-        for (let i = 1; i < level; i++) {
+        for (let i = 1; i <= level; i++) {
             this.applyBoosts(key);
         }
 
@@ -33,38 +33,39 @@ addPlayer(key, level, rarity = 'Normal') {
         }
 
         this.players[key].level = level;
+        this.players[key].rarity = rarity;
     } else {
         console.warn(`Character with key "${key}" not found.`);
     }
 }
 
-    applyRarityBuffs(playerKey, targetRarity) {
-        const player = this.players[playerKey];
-        if (!player) return;
+applyRarityBuffs(playerKey, targetRarity) {
+    const player = this.players[playerKey];
+    if (!player) return;
 
-        const rarityOrder = ['Normal', 'Rare', 'Super Rare', 'Ultra Rare', 'Legend'];
-        const startIndex = rarityOrder.indexOf(player.rarity);
-        const endIndex = rarityOrder.indexOf(targetRarity);
+    const rarityOrder = ['Normal', 'Rare', 'Super Rare', 'Ultra Rare', 'Legend'];
+    const startIndex = rarityOrder.indexOf('Normal');
+    const endIndex = rarityOrder.indexOf(targetRarity);
 
-        for (let i = startIndex + 1; i <= endIndex; i++) {
-            const currentRarity = rarityOrder[i];
-            const boostKey = `Rank${currentRarity.replace(' ', '')}`;
-            const boosts = player.RankUpBoost[boostKey];
-            
-            if (boosts) {
-                const [TP, FP, shoot, dribble, speed, strength, keeper] = boosts;
-                player.TP += TP || 0;
-                player.FP += FP || 0;
-                player.shoot += shoot || 0;
-                player.dribble += dribble || 0;
-                player.speed += speed || 0;
-                player.strength += strength || 0;
-                player.keeper += keeper || 0;
-            }
+    for (let i = startIndex + 1; i <= endIndex; i++) {
+        const currentRarity = rarityOrder[i];
+        const boostKey = `Rank${currentRarity.replace(' ', '')}`;
+        const boosts = player.RankUpBoost[boostKey];
+        
+        if (boosts) {
+            const [TP, FP, shoot, dribble, speed, strength, keeper] = boosts;
+            player.TP += TP || 0;
+            player.FP += FP || 0;
+            player.shoot += shoot || 0;
+            player.dribble += dribble || 0;
+            player.speed += speed || 0;
+            player.strength += strength || 0;
+            player.keeper += keeper || 0;
         }
-
-        player.rarity = targetRarity;
     }
+
+    player.rarity = targetRarity;
+}
     
     updateActivePlayers(newActivePlayerKeys) {
     this.activePlayers = newActivePlayerKeys.slice(0, 6);  // Limit to 6 players
@@ -358,21 +359,20 @@ applyBoosts(playerName) {
     const boosts = Object.values(charData.LvUpBoost);
     const level = player.level;
 
-    if (level > 1) {
-        const boostIndex = (level - 2) % boosts.length;
-        const currentBoost = boosts[boostIndex];
+    const boostIndex = (level - 1) % boosts.length;
+    const currentBoost = boosts[boostIndex];
 
-        const [TP, FP, shoot, dribble, speed, strength, keeper] = currentBoost;
+    const [TP, FP, shoot, dribble, speed, strength, keeper] = currentBoost;
 
-        player.TP += TP;
-        player.FP += FP;
-        player.shoot += shoot;
-        player.dribble += dribble;
-        player.speed += speed;
-        player.strength += strength;
-        player.keeper += keeper;
+    player.TP += TP;
+    player.FP += FP;
+    player.shoot += shoot;
+    player.dribble += dribble;
+    player.speed += speed;
+    player.strength += strength;
+    player.keeper += keeper;
 
-    }
+    player.level++;
 }
 
     levelUp(playerName) {
