@@ -1,44 +1,66 @@
 class PlayerStats {
     constructor() {
         this.players = {};
-        this.characterStats = this.initializePlayerStats(); // Armazena as definições de personagens
-        this.activePlayers = []; // Add this line to store active players
+        this.characterStats = this.initializePlayerStats();
+        this.activePlayers = [];
         this.rarityRanks = ['Normal', 'Rare', 'Super Rare', 'Ultra Rare', 'Legend'];
+        this.expToNextLevel = 500; // Fixed exp required for next level
     }
 
-addPlayer(key, level, rarity = 'Normal') {
-    if (this.characterStats[key]) {
-        const character = this.characterStats[key];
-        this.players[key] = {
-            ...character,
-            level: 1,
-            rarity: 'Normal',
-            TP: character.TP || 0,
-            FP: character.FP || 0,
-            shoot: character.shoot || 0,
-            dribble: character.dribble || 0,
-            speed: character.speed || 0,
-            strength: character.strength || 0,
-            keeper: character.keeper || 0
-        };
+    addPlayer(key, level, rarity = 'Normal', exp = 0) {
+        if (this.characterStats[key]) {
+            const character = this.characterStats[key];
+            this.players[key] = {
+                ...character,
+                level: 1,
+                rarity: 'Normal',
+                exp: 0,
+                TP: character.TP || 0,
+                FP: character.FP || 0,
+                shoot: character.shoot || 0,
+                dribble: character.dribble || 0,
+                speed: character.speed || 0,
+                strength: character.strength || 0,
+                keeper: character.keeper || 0
+            };
 
-        // Apply level boosts
-        for (let i = 2; i <= level; i++) {
-            this.applyBoosts(key);
+            // Apply level boosts
+            for (let i = 2; i <= level; i++) {
+                this.applyBoosts(key);
+            }
+
+            // Apply rarity buffs
+            if (rarity !== 'Normal') {
+                this.applyRarityBuffs(key, rarity);
+            }
+
+            this.players[key].level = level;
+            this.players[key].rarity = rarity;
+            this.players[key].exp = exp;
+        } else {
+            console.warn(`Character with key "${key}" not found.`);
         }
-
-        // Apply rarity buffs
-        if (rarity !== 'Normal') {
-            this.applyRarityBuffs(key, rarity);
-        }
-
-        this.players[key].level = level;
-        this.players[key].rarity = rarity;
-    } else {
-        console.warn(`Character with key "${key}" not found.`);
     }
-}
 
+    addExp(playerKey, amount) {
+        const player = this.players[playerKey];
+        if (!player) return;
+
+        player.exp += amount;
+        while (player.exp >= this.expToNextLevel) {
+            player.exp -= this.expToNextLevel;
+            this.levelUp(playerKey);
+        }
+    }
+
+    levelUp(playerKey) {
+        const player = this.players[playerKey];
+        if (!player) return;
+
+        player.level++;
+        this.applyBoosts(playerKey);
+    }
+    
 applyRarityBuffs(playerKey, targetRarity) {
     const player = this.players[playerKey];
     if (!player) return;
@@ -323,57 +345,55 @@ applyRarityBuffs(playerKey, targetRarity) {
         };
     }
 
-initializeDefaultPlayers() {
-    const defaultPlayers = [
-        { key: 'markEvans', level: 4, rarity: 'Rare' },
-        { key: 'nathanSwift', level: 3, rarity: 'Rare' },
-        { key: 'axelBlaze', level: 3, rarity: 'Normal' },
-        { key: 'jackWallside', level: 4, rarity: 'Normal' },
-        { key: 'todIronside', level: 2, rarity: 'Normal' },
-        { key: 'kevinDragonfly', level: 2, rarity: 'Normal' }
-    ];
+    initializeDefaultPlayers() {
+        const defaultPlayers = [
+            { key: 'markEvans', level: 4, rarity: 'Rare', exp: 250 },
+            { key: 'nathanSwift', level: 3, rarity: 'Rare', exp: 150 },
+            { key: 'axelBlaze', level: 3, rarity: 'Normal', exp: 100 },
+            { key: 'jackWallside', level: 4, rarity: 'Normal', exp: 200 },
+            { key: 'todIronside', level: 2, rarity: 'Normal', exp: 50 },
+            { key: 'kevinDragonfly', level: 2, rarity: 'Normal', exp: 75 }
+        ];
 
-    defaultPlayers.forEach(player => {
-        const stats = this.initializePlayerStats()[player.key];
-        if (stats) {
-            // Initialize the player with specified level and rarity
-            this.addPlayer(player.key, player.level, player.rarity);
-        } else {
-            console.error(`Jogador com a chave '${player.key}' não encontrado!`);
-        }
-    });
+        defaultPlayers.forEach(player => {
+            const stats = this.initializePlayerStats()[player.key];
+            if (stats) {
+                // Initialize the player with specified level, rarity, and exp
+                this.addPlayer(player.key, player.level, player.rarity, player.exp);
+            } else {
+                console.error(`Jogador com a chave '${player.key}' não encontrado!`);
+            }
+        });
 
-    // Set initial active players
-    this.activePlayers = defaultPlayers.map(player => player.key);
-}
+        // Set initial active players
+        this.activePlayers = defaultPlayers.map(player => player.key);
+    }
 
 
 
-applyBoosts(playerName) {
-    const player = this.players[playerName];
-    if (!player) return;
+    applyBoosts(playerName) {
+        const player = this.players[playerName];
+        if (!player) return;
 
-    const charData = this.initializePlayerStats()[playerName];
-    if (!charData || !charData.LvUpBoost) return;
+        const charData = this.initializePlayerStats()[playerName];
+        if (!charData || !charData.LvUpBoost) return;
 
-    const boosts = Object.values(charData.LvUpBoost);
-    const level = player.level;
+        const boosts = Object.values(charData.LvUpBoost);
+        const level = player.level;
 
-    const boostIndex = (level - 1) % boosts.length;
-    const currentBoost = boosts[boostIndex];
+        const boostIndex = (level - 1) % boosts.length;
+        const currentBoost = boosts[boostIndex];
 
-    const [TP, FP, shoot, dribble, speed, strength, keeper] = currentBoost;
+        const [TP, FP, shoot, dribble, speed, strength, keeper] = currentBoost;
 
-    player.TP += TP;
-    player.FP += FP;
-    player.shoot += shoot;
-    player.dribble += dribble;
-    player.speed += speed;
-    player.strength += strength;
-    player.keeper += keeper;
-
-    player.level++;
-}
+        player.TP += TP;
+        player.FP += FP;
+        player.shoot += shoot;
+        player.dribble += dribble;
+        player.speed += speed;
+        player.strength += strength;
+        player.keeper += keeper;
+    }
 
     levelUp(playerName) {
     const player = this.players[playerName];
