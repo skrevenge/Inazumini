@@ -354,7 +354,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 hissatsu: ['Shippuu Dash', 'Dark Phoenix'],
                 headSpriteConfig: {
                     key: 'raimonHead',
-                    frames: [8, 9, 10, 11, 12, 13, 14, 15]
+                    frames: [32, 33, 34, 35, 36, 37, 38, 39]
                 },
                 portraitFrame: 4,
                 LvUpBoost: {
@@ -389,7 +389,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 hissatsu: ['Shippuu Dash', 'Dark Phoenix'],
                 headSpriteConfig: {
                     key: 'raimonHead',
-                    frames: [8, 9, 10, 11, 12, 13, 14, 15]
+                    frames: [40, 41, 42, 43, 44, 45, 46, 47]
                 },
                 portraitFrame: 5,
                 LvUpBoost: {
