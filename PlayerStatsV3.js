@@ -237,7 +237,7 @@ applyRarityBuffs(playerKey, targetRarity) {
             }),
             'nathanSwift': new PlayerStats.Character({
                 name: 'Nathan Swift',
-                undubName: 'Kazemaru Ichirouta',
+                undubName: 'Ichirouta Kazemaru',
                 TP: 160,
                 FP: 180,
                 attribute: 'Wind',
