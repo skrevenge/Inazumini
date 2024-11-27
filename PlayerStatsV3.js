@@ -284,9 +284,9 @@ applyRarityBuffs(playerKey, targetRarity) {
                 hissatsu: ['God Hand', 'Burning Punch'],
                 headSpriteConfig: {
                     key: 'raimonHead',
-                    frames: [0, 1, 2, 3, 4, 5, 6, 7]
+                    frames: [16, 17, 18, 19, 20, 21, 22, 23]
                 },
-                portraitFrame: 0,
+                portraitFrame: 2,
                 LvUpBoost: {
                     1: [5, 4, 1, 2, 2, 2, 3],
                     2: [6, 5, 2, 2, 2, 2, 3],
@@ -319,9 +319,9 @@ applyRarityBuffs(playerKey, targetRarity) {
                 hissatsu: ['God Hand', 'Burning Punch'],
                 headSpriteConfig: {
                     key: 'raimonHead',
-                    frames: [0, 1, 2, 3, 4, 5, 6, 7]
+                    frames: [24, 25, 26, 27, 28, 29, 30, 31]
                 },
-                portraitFrame: 0,
+                portraitFrame: 3,
                 LvUpBoost: {
                     1: [5, 4, 1, 2, 2, 2, 3],
                     2: [6, 5, 2, 2, 2, 2, 3],
@@ -356,7 +356,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                     key: 'raimonHead',
                     frames: [8, 9, 10, 11, 12, 13, 14, 15]
                 },
-                portraitFrame: 1,
+                portraitFrame: 4,
                 LvUpBoost: {
                     1: [4, 5, 2, 3, 3, 2, 1],
                     2: [5, 6, 2, 3, 3, 2, 1],
@@ -391,7 +391,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                     key: 'raimonHead',
                     frames: [8, 9, 10, 11, 12, 13, 14, 15]
                 },
-                portraitFrame: 1,
+                portraitFrame: 5,
                 LvUpBoost: {
                     1: [4, 5, 2, 3, 3, 2, 1],
                     2: [5, 6, 2, 3, 3, 2, 1],
