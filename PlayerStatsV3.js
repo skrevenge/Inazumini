@@ -129,6 +129,75 @@ applyRarityBuffs(playerKey, targetRarity) {
         }
     };
 
+    initializeDefaultPlayers() {
+        const defaultPlayers = [
+            { key: 'markEvans', level: 4, rarity: 'Rare', exp: 250 },
+            { key: 'nathanSwift', level: 3, rarity: 'Rare', exp: 150 },
+            { key: 'axelBlaze', level: 3, rarity: 'Normal', exp: 100 },
+            { key: 'jackWallside', level: 4, rarity: 'Normal', exp: 200 },
+            { key: 'todIronside', level: 2, rarity: 'Normal', exp: 50 },
+            { key: 'kevinDragonfly', level: 2, rarity: 'Normal', exp: 75 }
+        ];
+
+        defaultPlayers.forEach(player => {
+            const stats = this.initializePlayerStats()[player.key];
+            if (stats) {
+                // Initialize the player with specified level, rarity, and exp
+                this.addPlayer(player.key, player.level, player.rarity, player.exp);
+            } else {
+                console.error(`Jogador com a chave '${player.key}' não encontrado!`);
+            }
+        });
+
+        // Set initial active players
+        this.activePlayers = defaultPlayers.map(player => player.key);
+    }
+
+
+
+    applyBoosts(playerName) {
+        const player = this.players[playerName];
+        if (!player) return;
+
+        const charData = this.initializePlayerStats()[playerName];
+        if (!charData || !charData.LvUpBoost) return;
+
+        const boosts = Object.values(charData.LvUpBoost);
+        const level = player.level;
+
+        const boostIndex = (level - 1) % boosts.length;
+        const currentBoost = boosts[boostIndex];
+
+        const [TP, FP, shoot, dribble, speed, strength, keeper] = currentBoost;
+
+        player.TP += TP;
+        player.FP += FP;
+        player.shoot += shoot;
+        player.dribble += dribble;
+        player.speed += speed;
+        player.strength += strength;
+        player.keeper += keeper;
+    }
+
+    levelUp(playerName) {
+    const player = this.players[playerName];
+    if (!player) return;
+
+    player.level++; // Incrementa o nível do jogador
+
+    this.applyBoosts(playerName); // Aplica os boosts correspondentes
+}
+
+
+    getAllPlayers() {
+        return Object.keys(this.players);
+    }
+
+    getPlayerStats(playerKey) {
+        return this.players[playerKey];
+    }
+
+    
     initializePlayerStats() {
         return {
             'markEvans': new PlayerStats.Character({
@@ -345,71 +414,4 @@ applyRarityBuffs(playerKey, targetRarity) {
         };
     }
 
-    initializeDefaultPlayers() {
-        const defaultPlayers = [
-            { key: 'markEvans', level: 4, rarity: 'Rare', exp: 250 },
-            { key: 'nathanSwift', level: 3, rarity: 'Rare', exp: 150 },
-            { key: 'axelBlaze', level: 3, rarity: 'Normal', exp: 100 },
-            { key: 'jackWallside', level: 4, rarity: 'Normal', exp: 200 },
-            { key: 'todIronside', level: 2, rarity: 'Normal', exp: 50 },
-            { key: 'kevinDragonfly', level: 2, rarity: 'Normal', exp: 75 }
-        ];
-
-        defaultPlayers.forEach(player => {
-            const stats = this.initializePlayerStats()[player.key];
-            if (stats) {
-                // Initialize the player with specified level, rarity, and exp
-                this.addPlayer(player.key, player.level, player.rarity, player.exp);
-            } else {
-                console.error(`Jogador com a chave '${player.key}' não encontrado!`);
-            }
-        });
-
-        // Set initial active players
-        this.activePlayers = defaultPlayers.map(player => player.key);
-    }
-
-
-
-    applyBoosts(playerName) {
-        const player = this.players[playerName];
-        if (!player) return;
-
-        const charData = this.initializePlayerStats()[playerName];
-        if (!charData || !charData.LvUpBoost) return;
-
-        const boosts = Object.values(charData.LvUpBoost);
-        const level = player.level;
-
-        const boostIndex = (level - 1) % boosts.length;
-        const currentBoost = boosts[boostIndex];
-
-        const [TP, FP, shoot, dribble, speed, strength, keeper] = currentBoost;
-
-        player.TP += TP;
-        player.FP += FP;
-        player.shoot += shoot;
-        player.dribble += dribble;
-        player.speed += speed;
-        player.strength += strength;
-        player.keeper += keeper;
-    }
-
-    levelUp(playerName) {
-    const player = this.players[playerName];
-    if (!player) return;
-
-    player.level++; // Incrementa o nível do jogador
-
-    this.applyBoosts(playerName); // Aplica os boosts correspondentes
-}
-
-
-    getAllPlayers() {
-        return Object.keys(this.players);
-    }
-
-    getPlayerStats(playerKey) {
-        return this.players[playerKey];
-    }
 }
