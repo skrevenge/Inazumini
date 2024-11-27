@@ -133,7 +133,7 @@ applyRarityBuffs(playerKey, targetRarity) {
         const defaultPlayers = [
             { key: 'markEvans', level: 4, rarity: 'Rare', exp: 250 },
             { key: 'nathanSwift', level: 3, rarity: 'Normal', exp: 150 },
-            { key: 'axelBlaze', level: 3, rarity: 'Rare', exp: 100 },
+            { key: 'axelBlaze', level: 3, rarity: 'Super Rare', exp: 100 },
             { key: 'jackWallside', level: 4, rarity: 'Normal', exp: 200 },
             { key: 'todIronside', level: 2, rarity: 'Normal', exp: 50 },
             { key: 'kevinDragonfly', level: 2, rarity: 'Normal', exp: 75 }
