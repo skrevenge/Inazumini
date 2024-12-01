@@ -221,8 +221,8 @@ class LobbyInterface {
         const infoY = blockY - 110;
         const infoX = blockX + blockWidth / 2;
 
-        this.addText(infoX, infoY, displayName, '16px');
-        this.addText(infoX, infoY + 25, `Lv.${playerData.level}`, '16px');
+        this.addText(infoX, infoY, displayName, '18px');
+        this.addText(infoX, infoY + 25, `Lv.${playerData.level}`, '18px');
 
         const rarityFrame = this.scene.getRarityFrame(playerData.rarity);
         const raritySprite = this.scene.add.image(infoX, infoY + 50, 'raritySprite', rarityFrame);
