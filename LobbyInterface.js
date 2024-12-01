@@ -241,13 +241,13 @@ class LobbyInterface {
         
         // Create the main text
         const mainText = this.scene.add.bitmapText(x, y, 'customFont', text, size)
-            .setOrigin(0.5, 0)
+            .setOrigin(1, 0)
             .setDepth(5)
             .setTint(0xffffff);  // White color
         
         // Create a shadow text for better visibility
         const shadowText = this.scene.add.bitmapText(x + 2, y + 2, 'customFont', text, size)
-            .setOrigin(0.5, 0)
+            .setOrigin(1, 0)
             .setDepth(4)
             .setTint(0x000000)  // Black color
             .setAlpha(0.6);     // Semi-transparent
