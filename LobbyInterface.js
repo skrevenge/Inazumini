@@ -246,6 +246,6 @@ class LobbyInterface {
             .setTint(0xffffff);  // White color
         
         // Return an object containing both text objects
-        return { mainText, shadowText };
+        return { mainText };
     }
 }
