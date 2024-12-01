@@ -88,12 +88,6 @@ class LobbyInterface {
         this.rightSideBt.on('pointerdown', () => this.updateLobbyScreen('formation'));
     }
 
-    createMessageText() {
-        this.messageText = this.scene.add.bitmapText(400, 150, 'customFont', '', 24)
-            .setOrigin(1)
-            .setTint(0xffffff);
-    }
-
     playBackgroundAnimations() {
         const playAnimationsInSequence = (index = 0) => {
             const keys = ['lobbyBg0', 'lobbyBg1', 'lobbyBg2'];
@@ -221,8 +215,8 @@ class LobbyInterface {
         const infoY = blockY - 110;
         const infoX = blockX + blockWidth / 2;
 
-        this.addText(infoX, infoY, displayName, '18px');
-        this.addText(infoX, infoY + 25, `Lv.${playerData.level}`, '18px');
+        this.addText(infoX, infoY, displayName, '16px');
+        this.addText(infoX, infoY + 25, `Lv.${playerData.level}`, '16px');
 
         const rarityFrame = this.scene.getRarityFrame(playerData.rarity);
         const raritySprite = this.scene.add.image(infoX, infoY + 50, 'raritySprite', rarityFrame);
@@ -241,13 +235,13 @@ class LobbyInterface {
         
         // Create the main text
         const mainText = this.scene.add.bitmapText(x, y, 'customFont', text, size)
-            .setOrigin(1, 0)
+            .setOrigin(1.5, 0)
             .setDepth(5)
             .setTint(0xffffff);  // White color
         
         // Create a shadow text for better visibility
         const shadowText = this.scene.add.bitmapText(x + 2, y + 2, 'customFont', text, size)
-            .setOrigin(1, 0)
+            .setOrigin(1.5, 0)
             .setDepth(4)
             .setTint(0x000000)  // Black color
             .setAlpha(0.6);     // Semi-transparent
