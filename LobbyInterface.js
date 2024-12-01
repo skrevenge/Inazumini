@@ -89,14 +89,9 @@ class LobbyInterface {
     }
 
     createMessageText() {
-        this.messageText = this.scene.add.text(400, 150, '', {
-            fontFamily: 'fantasy',
-            fontSize: '48px',
-            fill: '#ffffff',
-            fontStyle: 'bold',
-            stroke: '#000000',
-            strokeThickness: 6
-        }).setOrigin(0.5);
+        this.messageText = this.scene.add.bitmapText(400, 150, 'customFont', '', 24)
+            .setOrigin(1)
+            .setTint(0xffffff);
     }
 
     playBackgroundAnimations() {
