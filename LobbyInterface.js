@@ -236,13 +236,16 @@ class LobbyInterface {
     }
 
     addText(x, y, text, fontSize) {
-        return this.scene.add.text(x, y, text, {
-            fontFamily: 'fantasy',
-            fontSize: fontSize,
-            fill: '#ffffff',
-            align: 'center',
-            stroke: '#000000',
-            strokeThickness: fontSize === '14px' ? 2 : 3
-        }).setOrigin(0.5, 0).setDepth(5);
+        // Convert fontSize to a number
+        const size = parseInt(fontSize);
+        
+        // Create the main text
+        const mainText = this.scene.add.bitmapText(x, y, 'customFont', text, size)
+            .setOrigin(1, 0)
+            .setDepth(5)
+            .setTint(0xffffff);  // White color
+        
+        // Return an object containing both text objects
+        return { mainText, shadowText };
     }
 }
