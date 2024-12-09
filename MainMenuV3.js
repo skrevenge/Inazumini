@@ -64,6 +64,53 @@ class MainMenu {
         }
     }
 
+handleContinue() {
+    console.log('Handling continue...');
+    const savedData = localStorage.getItem('inazuminiSave');
+
+    if (savedData) {
+        try {
+            // Parse the saved data
+            const saveData = JSON.parse(savedData);
+
+            // Version check (for future compatibility)
+            if (saveData.version !== '1.0') {
+                console.warn('Save data version mismatch');
+                return false;
+            }
+
+            // Load formation
+            this.scene.currentFormation = saveData.formation;
+            console.log('Loaded formation:', this.scene.currentFormation);
+
+            // Load active players
+            this.scene.playerStats.activePlayers = saveData.players.active.map(playerData => playerData.key);
+            console.log('Loaded active players:', this.scene.playerStats.activePlayers);
+
+            // Update individual player stats
+            saveData.players.active.forEach(playerData => {
+                const player = this.scene.playerStats.getPlayerStats(playerData.key);
+                if (player) {
+                    player.level = playerData.stats.level;
+                    player.exp = playerData.stats.exp;
+                    player.rarity = playerData.stats.rarity;
+                    console.log(`Updated player ${playerData.key}:`, player);
+                }
+            });
+
+            // Clear menu and show lobby
+            this.scene.children.removeAll();
+            this.scene.showLobby('lobby');
+            console.log('Successfully loaded game and transitioned to lobby');
+
+        } catch (error) {
+            console.error('Error loading game data:', error);
+        }
+    } else {
+        console.log('No save data available');
+    }
+}
+
     addHoverEffect(container) {
         const baseScale = 1;
         const hoverScale = baseScale * 1.1;
