@@ -70,7 +70,7 @@ handleMenuSelection(item, selectedContainer) {
     }
 }
 
-function handleNewGame() {
+ handleNewGame() {
     if (localStorage.getItem('inazuminiSave')) {
         // Create confirmation dialog
         const dialogWidth = 400;
