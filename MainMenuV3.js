@@ -37,32 +37,118 @@ class MainMenu {
         console.log('Main menu creation complete');
     }
 
-    handleMenuSelection(item, selectedContainer) {
-        console.log(`Selected menu item: ${item}`);
-        // Apply darkening effect
-        this.scene.tweens.add({
-            targets: selectedContainer.first, // Target the bar image
-            alpha: 0.5, // Darken the button
-            duration: 100,
-            yoyo: true, // This will reverse the tween, bringing the alpha back to 1
-            ease: 'Power2'
-        });
-        // Implement the logic for each menu option here
-        switch (item) {
-            case 'MenuOption_NewGame':
-                console.log('Starting new game...');
-                this.handleNewGame();
-                break;
-            case 'MenuOption_Continue':
-                console.log('Continuing game...');
-                this.handleContinue();
-                break;
-            case 'MenuOption_Instructions':
-                console.log('Showing instructions...');
-                this.showInstructionsScreen();
-                break;
-        }
+handleMenuSelection(item, selectedContainer) {
+    console.log(`Selected menu item: ${item}`);
+    // Apply darkening effect
+    this.scene.tweens.add({
+        targets: selectedContainer.first, // Target the bar image
+        alpha: 0.5, // Darken the button
+        duration: 100,
+        yoyo: true, // This will reverse the tween, bringing the alpha back to 1
+        ease: 'Power2'
+    });
+    // Implement the logic for each menu option here
+    switch (item) {
+        case 'MenuOption_NewGame':
+            if (localStorage.getItem('inazuminiSave')) {
+                // Chama a função handleNewGame para mostrar o modal
+                this.handleNewGame(); 
+            } else {
+                // Não há save, inicia um novo jogo diretamente
+                this.destroy();
+                this.scene.showLobby('lobby'); 
+            }
+            break;
+        case 'MenuOption_Continue':
+            console.log('Continuing game...');
+            this.handleContinue();
+            break;
+        case 'MenuOption_Instructions':
+            console.log('Showing instructions...');
+            this.showInstructionsScreen();
+            break;
     }
+}
+
+function handleNewGame() {
+    if (localStorage.getItem('inazuminiSave')) {
+        // Create confirmation dialog
+        const dialogWidth = 400;
+        const dialogHeight = 200;
+        const x = 400;
+        const y = 300;
+        
+        // Add semi-transparent background
+        const overlay = this.scene.add.rectangle(0, 0, 800, 600, 0x000000, 0.7)
+            .setOrigin(0)
+            .setDepth(3);
+        
+        // Add dialog background
+        const dialogBg = this.scene.add.rectangle(x, y, dialogWidth, dialogHeight, 0x333333)
+            .setOrigin(0.5)
+            .setDepth(3);
+        
+        // Add warning text
+        const warningText = this.scene.add.bitmapText(x, y - 40, 'customFont',
+            'Existing save data detected!\nStart new game and delete save?', 24)
+            .setOrigin(0.5)
+            .setDepth(3);
+        
+        // Add Yes button
+        const yesButton = this.scene.add.image(x - 80, y + 40, 'button')
+            .setInteractive()
+            .setDepth(3);
+        const yesText = this.scene.add.bitmapText(x - 80, y + 40, 'customFont', 'Yes', 24)
+            .setOrigin(0.5)
+            .setDepth(3);
+        
+        // Add No button
+        const noButton = this.scene.add.image(x + 80, y + 40, 'button')
+            .setInteractive()
+            .setDepth(3);
+        const noText = this.scene.add.bitmapText(x + 80, y + 40, 'No', 24)
+            .setOrigin(0.5)
+            .setDepth(3);
+
+        // Handle button clicks
+        yesButton.on('pointerdown', () => {
+            // Clear save data
+            localStorage.removeItem('inazuminiSave');
+
+            // Reset to default state
+            this.scene.playerStats = new PlayerStats();
+            this.scene.playerStats.initializeDefaultPlayers();
+            this.scene.playerStats.activePlayers = this.scene.playerStats.getAllPlayers().slice(0, 6);
+
+            // Clean up dialog and start new game
+            overlay.destroy();
+            dialogBg.destroy();
+            warningText.destroy();
+            yesButton.destroy();
+            yesText.destroy();
+            noButton.destroy();
+            noText.destroy();
+            this.destroy();
+            this.scene.showLobby('lobby'); 
+        });
+
+        noButton.on('pointerdown', () => {
+            // Just clean up dialog
+            overlay.destroy();
+            dialogBg.destroy();
+            warningText.destroy();
+            yesButton.destroy();
+            yesText.destroy();
+            noButton.destroy();
+            noText.destroy();
+        });
+    } else {
+        // No save data exists, start new game directly
+        this.destroy();
+        this.scene.showLobby('lobby');
+    }
+}
+
 
     handleContinue() {
         console.log('Handling continue...');
@@ -108,87 +194,6 @@ class MainMenu {
             }
         } else {
             console.log('No save data available');
-        }
-    }
-
-    handleNewGame() {
-        if (localStorage.getItem('inazuminiSave')) {
-            // Create confirmation dialog
-            const dialogWidth = 400;
-            const dialogHeight = 200;
-            const x = 400;
-            const y = 300;
-            
-            // Add semi-transparent background
-            const overlay = this.scene.add.rectangle(0, 0, 800, 600, 0x000000, 0.7)
-                .setOrigin(0)
-                .setDepth(3);
-            
-            // Add dialog background
-            const dialogBg = this.scene.add.rectangle(x, y, dialogWidth, dialogHeight, 0x333333)
-                .setOrigin(0.5)
-                .setDepth(3);
-            
-            // Add warning text
-            const warningText = this.scene.add.bitmapText(x, y - 40, 'customFont',
-                'Existing save data detected!\nStart new game and delete save?', 24)
-                .setOrigin(0.5)
-                .setDepth(3);
-            
-            // Add Yes button
-            const yesButton = this.scene.add.image(x - 80, y + 40, 'button')
-                .setInteractive()
-                .setDepth(3);
-            const yesText = this.scene.add.bitmapText(x - 80, y + 40, 'customFont', 'Yes', 24)
-                .setOrigin(0.5)
-                .setDepth(3);
-            
-            // Add No button
-            const noButton = this.scene.add.image(x + 80, y + 40, 'button')
-                .setInteractive()
-                .setDepth(3);
-            const noText = this.scene.add.bitmapText(x + 80, y + 40, 'customFont', 'No', 24)
-                .setOrigin(0.5)
-                .setDepth(3);
-
-            // Handle button clicks
-            yesButton.on('pointerdown', () => {
-                // Clear save data
-                localStorage.removeItem('inazuminiSave');
-
-                // Reset to default state
-                this.scene.playerStats = new PlayerStats();
-                this.scene.playerStats.initializeDefaultPlayers();
-                this.scene.playerStats.activePlayers = this.scene.playerStats.getAllPlayers().slice(0, 6);
-
-                // Clean up dialog
-                overlay.destroy();
-                dialogBg.destroy();
-                warningText.destroy();
-                yesButton.destroy();
-                yesText.destroy();
-                noButton.destroy();
-                noText.destroy();
-
-                // Show lobby with new game
-                this.destroy();
-                this.scene.showLobby('lobby');
-            });
-
-            noButton.on('pointerdown', () => {
-                // Just clean up dialog
-                overlay.destroy();
-                dialogBg.destroy();
-                warningText.destroy();
-                yesButton.destroy();
-                yesText.destroy();
-                noButton.destroy();
-                noText.destroy();
-            });
-        } else {
-            // No save data exists, start new game directly
-            this.destroy();
-            this.scene.showLobby('lobby');
         }
     }
 
