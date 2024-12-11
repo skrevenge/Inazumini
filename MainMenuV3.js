@@ -96,7 +96,7 @@ handleMenuSelection(item, selectedContainer) {
         
         // Add Yes button
         const yesButton = this.scene.add.image(x - 80, y + 40, 'button')
-            .setInteractive()
+            .setInteractive({ useHandCursor: true })
             .setDepth(3);
         const yesText = this.scene.add.bitmapText(x - 80, y + 40, 'customFont', 'Yes', 24)
             .setOrigin(0.5)
@@ -104,11 +104,31 @@ handleMenuSelection(item, selectedContainer) {
         
         // Add No button
         const noButton = this.scene.add.image(x + 80, y + 40, 'button')
-            .setInteractive()
+            .setInteractive({ useHandCursor: true })
             .setDepth(3);
         const noText = this.scene.add.bitmapText(x + 80, y + 40, 'No', 24)
             .setOrigin(0.5)
             .setDepth(3);
+
+            // Add hover effects for both buttons
+    [yesButton, noButton].forEach(button => {
+        button.on('pointerover', () => {
+            this.scene.tweens.add({
+                targets: button,
+                scaleX: 1.3,
+                scaleY: 1.3,
+                duration: 100
+            });
+        });
+
+        button.on('pointerout', () => {
+            this.scene.tweens.add({
+                targets: button,
+                scaleX: 1.2,
+                scaleY: 1.2,
+                duration: 100
+            });
+        });
 
         // Handle button clicks
         yesButton.on('pointerdown', () => {
