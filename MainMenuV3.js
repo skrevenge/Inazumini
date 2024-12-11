@@ -106,7 +106,7 @@ handleMenuSelection(item, selectedContainer) {
         const noButton = this.scene.add.image(x + 80, y + 40, 'button')
             .setInteractive({ useHandCursor: true })
             .setDepth(3);
-        const noText = this.scene.add.bitmapText(x + 80, y + 40, 'No', 24)
+        const noText = this.scene.add.bitmapText(x + 80, y + 40, 'customFont', 'No', 24)
             .setOrigin(0.5)
             .setDepth(3);
 
@@ -129,9 +129,10 @@ handleMenuSelection(item, selectedContainer) {
                 duration: 100
             });
         });
+    });
 
-        // Handle button clicks
-        yesButton.on('pointerdown', () => {
+    // Handle button clicks separately from the forEach loop
+    yesButton.on('pointerdown', () => {
             // Clear save data
             localStorage.removeItem('inazuminiSave');
 
