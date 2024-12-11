@@ -25,6 +25,7 @@ class LobbyInterface {
     }
 
     createBackground() {
+        const greenBackground = this.scene.add.rectangle(400, 300, 800, 600, 0x2D572C);
         this.fullScreenInteractive = this.scene.add.rectangle(400, 300, 800, 600, 0x000000, 0);
         this.fullScreenInteractive.setInteractive();
 
