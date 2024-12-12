@@ -26,12 +26,19 @@ class LobbyInterface {
     }
 
     createBackground() {
-        const greenBackground = this.scene.add.rectangle(400, 300, 800, 600, 0x2D572C);
-        this.fullScreenInteractive = this.scene.add.rectangle(400, 300, 800, 600, 0x000000, 0);
-        this.fullScreenInteractive.setInteractive();
+        // Store the green background reference and set its depth to be behind everything
+        this.greenBackground = this.scene.add.rectangle(400, 300, 800, 600, 0x2D572C)
+            .setDepth(-2);
+            
+        // Set interactive area depth just above the green background
+        this.fullScreenInteractive = this.scene.add.rectangle(400, 300, 800, 600, 0x000000, 0)
+            .setDepth(-1)
+            .setInteractive();
 
-        this.lobbyBg = this.scene.add.sprite(400, 300, 'lobbyBg0');
-        this.lobbyBg.setOrigin(0.5);
+        // Set the animated background above the interactive area
+        this.lobbyBg = this.scene.add.sprite(400, 300, 'lobbyBg0')
+            .setOrigin(0.5)
+            .setDepth(0);
 
         // Create animations for each spritesheet
         ['lobbyBg0', 'lobbyBg1', 'lobbyBg2'].forEach((key, index) => {
