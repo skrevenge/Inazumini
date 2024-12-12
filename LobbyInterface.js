@@ -27,11 +27,11 @@ class LobbyInterface {
     createBackground() {
         // Store the green background reference and set its depth to be behind everything
         this.greenBackground = this.scene.add.rectangle(400, 300, 800, 600, 0x2D572C)
-            .setDepth(-2);
+            .setDepth(-1);
             
         // Set interactive area depth just above the green background
         this.fullScreenInteractive = this.scene.add.rectangle(400, 300, 800, 600, 0x000000, 0)
-            .setDepth(-1)
+            .setDepth(-2)
             .setInteractive();
 
         // Set the animated background above the interactive area
