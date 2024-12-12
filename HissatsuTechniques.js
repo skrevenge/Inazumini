@@ -9,6 +9,7 @@ class HissatsuTechniques {
                 TP_Cost: 90,
                 Power: 150,
                 Type: 'Dribble',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -21,6 +22,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Dribble',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -33,6 +35,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Defense',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -45,6 +48,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Dribble',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -57,6 +61,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Defense',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -69,6 +74,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Defense',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -81,6 +87,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Defense',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -93,6 +100,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Defense',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -105,6 +113,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Shoot',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 1,
                 VictimsRequired: 0
@@ -117,6 +126,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Shoot',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -129,6 +139,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Shoot',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -141,6 +152,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Shoot',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -153,6 +165,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Shoot',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -165,6 +178,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Shoot',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -177,6 +191,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Shoot',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -189,6 +204,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Keeper',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -201,6 +217,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Keeper',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -213,6 +230,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Keeper',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
@@ -225,6 +243,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Keeper',
+                Rank: 1,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
