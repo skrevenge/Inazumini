@@ -3,7 +3,6 @@ class LobbyInterface {
         this.scene = scene;
         this.currentScreen = 'lobby';
         this.fullScreenInteractive = null;
-        this.greenBackground = null;
         this.lobbyBg = null;
         this.lobbyHeader = null;
         this.leftSideBt = null;
