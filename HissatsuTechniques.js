@@ -209,6 +209,19 @@ class HissatsuTechniques {
                 HelpersRequired: 0,
                 VictimsRequired: 0
             },
+            BPunch: {
+                ID: 'BPunch',
+                Name: 'Burning Punch',
+                Undub_Name: 'Nekketsu Punch',
+                Local_Name: 'Punho Explosivo',
+                TP_Cost: 30,
+                Power: 150,
+                Type: 'Keeper',
+                Rank: 1,
+                Animation: '',
+                HelpersRequired: 0,
+                VictimsRequired: 0
+            },
             BeastF: {
                 ID: 'BeastF',
                 Name: 'Beast Fang',
@@ -243,7 +256,7 @@ class HissatsuTechniques {
                 TP_Cost: 30,
                 Power: 150,
                 Type: 'Keeper',
-                Rank: 1,
+                Rank: 2,
                 Animation: '',
                 HelpersRequired: 0,
                 VictimsRequired: 0
