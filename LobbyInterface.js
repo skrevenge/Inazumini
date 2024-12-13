@@ -25,11 +25,15 @@ class LobbyInterface {
     }
 
     createBackground() {
-        // Store the green background reference and set its depth to be behind everything
-        this.greenBackground = this.scene.add.rectangle(400, 300, 800, 600, 0x2D572C)
-            .setDepth(-1);
-            
-        // Set interactive area depth just above the green background
+    // Verifica o estilo de jogo escolhido
+    if (this.scene.gameplayStyle === 'touch') {
+        // Se for touchscreen, usa uma imagem estática
+        this.lobbyBg = this.scene.add.image(
+            this.scene.scale.width / 2, 
+            this.scene.scale.height / 2, 
+            'background'
+        ).setOrigin(0.5).setDepth(-1);
+    } else {
         this.fullScreenInteractive = this.scene.add.rectangle(400, 300, 800, 600, 0x000000, 0)
             .setDepth(-2)
             .setInteractive();
@@ -48,6 +52,7 @@ class LobbyInterface {
                 repeat: 0
             });
         });
+}
     }
 
     createHeader() {
