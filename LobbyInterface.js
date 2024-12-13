@@ -20,19 +20,23 @@ class LobbyInterface {
         this.createHeader();
         this.createButtons();
         this.createMessageText();
-        this.playBackgroundAnimations();
+        if (this.scene.gameplayStyle !== 'touch') {
+            this.playBackgroundAnimations();
+        }
         this.updateLobbyScreen(this.currentScreen);
     }
 
     createBackground() {
-    // Verifica o estilo de jogo escolhido
-    if (this.scene.gameplayStyle === 'touch') {
-        // Se for touchscreen, usa uma imagem estática
-        this.lobbyBg = this.scene.add.image(
-            this.scene.scale.width / 2, 
-            this.scene.scale.height / 2, 
-            'background'
-        ).setOrigin(0.5).setDepth(0);
+        if (this.scene.gameplayStyle === 'touch') {
+            // Clear any existing background
+            if (this.lobbyBg) {
+                this.lobbyBg.destroy();
+            }
+            // Create static background for touchscreen
+            this.lobbyBg = this.scene.add.image(400, 300, 'background')
+                .setOrigin(0.5)
+                .setDepth(0)
+                .setDisplaySize(800, 600);
     } else {
         this.fullScreenInteractive = this.scene.add.rectangle(400, 300, 800, 600, 0x000000, 0)
             .setDepth(-2)
@@ -108,16 +112,19 @@ class LobbyInterface {
     }
 
     playBackgroundAnimations() {
-        const playAnimationsInSequence = (index = 0) => {
-            const keys = ['lobbyBg0', 'lobbyBg1', 'lobbyBg2'];
-            const key = keys[index];
-            this.lobbyBg.play(`${key}Animation`);
-            this.lobbyBg.once('animationcomplete', () => {
-                const nextIndex = (index + 1) % keys.length;
-                playAnimationsInSequence(nextIndex);
-            });
-        };
-        playAnimationsInSequence();
+        // Only play animations if we have an animated background
+        if (this.scene.gameplayStyle !== 'touch' && this.lobbyBg && this.lobbyBg.play) {
+            const playAnimationsInSequence = (index = 0) => {
+                const keys = ['lobbyBg0', 'lobbyBg1', 'lobbyBg2'];
+                const key = keys[index];
+                this.lobbyBg.play(`${key}Animation`);
+                this.lobbyBg.once('animationcomplete', () => {
+                    const nextIndex = (index + 1) % keys.length;
+                    playAnimationsInSequence(nextIndex);
+                });
+            };
+            playAnimationsInSequence();
+        }
     }
 
     updateLobbyScreen(screen) {
