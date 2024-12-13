@@ -32,7 +32,7 @@ class LobbyInterface {
             this.scene.scale.width / 2, 
             this.scene.scale.height / 2, 
             'background'
-        ).setOrigin(0.5).setDepth(-1);
+        ).setOrigin(0.5).setDepth(0);
     } else {
         this.fullScreenInteractive = this.scene.add.rectangle(400, 300, 800, 600, 0x000000, 0)
             .setDepth(-2)
