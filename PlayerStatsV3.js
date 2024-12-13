@@ -121,10 +121,10 @@ applyRarityBuffs(playerKey, targetRarity) {
             };
             this.portraitFrame = config.portraitFrame;
             this.LvUpBoost = config.LvUpBoost || {};
-            this.CpuRankRHst = config.CpuRankRHst || [];
-            this.CpuRankSRHst = config.CpuRankSRHst || [];
-            this.CpuRankURHst = config.CpuRankURHst || [];
-            this.CpuRankLHst = config.CpuRankLHst || [];
+            this.RankRHst = config.RankRHst || [];
+            this.RankSRHst = config.RankSRHst || [];
+            this.RankURHst = config.RankURHst || [];
+            this.RankLHst = config.RankLHst || [];
             this.RankUpBoost = config.RankUpBoost || {};
         }
     };
@@ -211,7 +211,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 speed: 70,
                 strength: 75,
                 keeper: 90,
-                hissatsu: ['God Hand', 'Burning Punch'],
+                hissatsu: ['GHand'],
                 headSpriteConfig: {
                     key: 'raimonHead',
                     frames: [0, 1, 2, 3, 4, 5, 6, 7]
@@ -230,10 +230,10 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [20, 16, 7, 8, 8, 8, 12],
                     RankLegend: [25, 20, 9, 10, 10, 10, 15]
                 },
-                CpuRankRHst: ['God Hand'],
-                CpuRankSRHst: ['God Hand', 'Majin The Hand'],
-                CpuRankURHst: ['God Hand', 'Majin The Hand', 'Fist of Justice'],
-                CpuRankLHst: ['God Hand', 'Majin The Hand', 'Fist of Justice', 'Hammer of Wrath']
+                RankRHst: ['GHand', 'BPunch'],
+                RankSRHst: ['GHand', 'BPunch', 'MajinTH'],
+                RankURHst: ['GHand', 'BPunch', 'MajinTH', 'FistJ'],
+                RankLHst: ['GHand', 'BPunch', 'MajinTH', 'FistJ', 'HammerW']
             }),
             'nathanSwift': new PlayerStats.Character({
                 name: 'Nathan Swift',
@@ -265,10 +265,10 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [16, 20, 8, 10, 12, 8, 6],
                     RankLegend: [20, 25, 10, 12, 15, 10, 8]
                 },
-                CpuRankRHst: ['Shippuu Dash'],
-                CpuRankSRHst: ['Shippuu Dash', 'Dark Phoenix'],
-                CpuRankURHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense'],
-                CpuRankLHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense', 'Fuujin no Mai']
+                RankRHst: ['Shippuu Dash'],
+                RankSRHst: ['Shippuu Dash', 'Dark Phoenix'],
+                RankURHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense'],
+                RankLHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense', 'Fuujin no Mai']
             }),
             'axelBlaze': new PlayerStats.Character({
                 name: 'Axel Blaze',
@@ -300,10 +300,10 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [20, 16, 7, 8, 8, 8, 12],
                     RankLegend: [25, 20, 9, 10, 10, 10, 15]
                 },
-                CpuRankRHst: ['God Hand'],
-                CpuRankSRHst: ['God Hand', 'Majin The Hand'],
-                CpuRankURHst: ['God Hand', 'Majin The Hand', 'Fist of Justice'],
-                CpuRankLHst: ['God Hand', 'Majin The Hand', 'Fist of Justice', 'Hammer of Wrath']
+                RankRHst: ['God Hand'],
+                RankSRHst: ['God Hand', 'MajinTH'],
+                RankURHst: ['God Hand', 'MajinTH', 'Fist of Justice'],
+                RankLHst: ['God Hand', 'MajinTH', 'Fist of Justice', 'Hammer of Wrath']
             }),
            'jackWallside': new PlayerStats.Character({
                 name: 'Jack Wallside',
@@ -335,10 +335,10 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [20, 16, 7, 8, 8, 8, 12],
                     RankLegend: [25, 20, 9, 10, 10, 10, 15]
                 },
-                CpuRankRHst: ['God Hand'],
-                CpuRankSRHst: ['God Hand', 'Majin The Hand'],
-                CpuRankURHst: ['God Hand', 'Majin The Hand', 'Fist of Justice'],
-                CpuRankLHst: ['God Hand', 'Majin The Hand', 'Fist of Justice', 'Hammer of Wrath']
+                RankRHst: ['God Hand'],
+                RankSRHst: ['God Hand', 'MajinTH'],
+                RankURHst: ['God Hand', 'MajinTH', 'Fist of Justice'],
+                RankLHst: ['God Hand', 'MajinTH', 'Fist of Justice', 'Hammer of Wrath']
             }),
           'todIronside': new PlayerStats.Character({
                 name: 'Tod Ironside',
@@ -370,10 +370,10 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [16, 20, 8, 10, 12, 8, 6],
                     RankLegend: [20, 25, 10, 12, 15, 10, 8]
                 },
-                CpuRankRHst: ['Shippuu Dash'],
-                CpuRankSRHst: ['Shippuu Dash', 'Dark Phoenix'],
-                CpuRankURHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense'],
-                CpuRankLHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense', 'Fuujin no Mai']
+                RankRHst: ['Shippuu Dash'],
+                RankSRHst: ['Shippuu Dash', 'Dark Phoenix'],
+                RankURHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense'],
+                RankLHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense', 'Fuujin no Mai']
             }),
           'kevinDragonfly': new PlayerStats.Character({
                 name: 'Kevin Dragonfly',
@@ -405,10 +405,10 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [16, 20, 8, 10, 12, 8, 6],
                     RankLegend: [20, 25, 10, 12, 15, 10, 8]
                 },
-                CpuRankRHst: ['Shippuu Dash'],
-                CpuRankSRHst: ['Shippuu Dash', 'Dark Phoenix'],
-                CpuRankURHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense'],
-                CpuRankLHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense', 'Fuujin no Mai']
+                RankRHst: ['Shippuu Dash'],
+                RankSRHst: ['Shippuu Dash', 'Dark Phoenix'],
+                RankURHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense'],
+                RankLHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense', 'Fuujin no Mai']
             }),
             // Add more players here as needed
         };
