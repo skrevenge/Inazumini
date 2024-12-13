@@ -156,10 +156,11 @@ class IntroMenu {
         this.addHoverEffect(touchImage);
     }
 
-    selectGameplayStyle(style) {
-        console.log(`Selected gameplay style: ${style}`);
-        this.scene.showMainMenu();
-    }
+selectGameplayStyle(style) {
+    console.log(`Selected gameplay style: ${style}`);
+    this.scene.gameplayStyle = style;  // Salva a escolha na cena
+    this.scene.showMainMenu();
+}
 
     addHoverEffect(image) {
         const baseScale = 0.8;
