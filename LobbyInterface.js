@@ -20,45 +20,21 @@ class LobbyInterface {
         this.createHeader();
         this.createButtons();
         this.createMessageText();
-        if (this.scene.gameplayStyle !== 'touch') {
-            this.playBackgroundAnimations();
-        }
         this.updateLobbyScreen(this.currentScreen);
     }
 
     createBackground() {
-        if (this.scene.gameplayStyle === 'touch') {
-            // Clear any existing background
-            if (this.lobbyBg) {
-                this.lobbyBg.destroy();
-            }
-            // Create static background for touchscreen
-            this.lobbyBg = this.scene.add.image(400, 300, 'background')
-                .setOrigin(0.5)
-                .setDepth(0)
-                .setDisplaySize(800, 600);
-    } else {
-        this.fullScreenInteractive = this.scene.add.rectangle(400, 300, 800, 600, 0x000000, 0)
-            .setDepth(-2)
-            .setInteractive();
-
-        // Set the animated background above the interactive area
-        this.lobbyBg = this.scene.add.sprite(400, 300, 'lobbyBg0')
+        // Clear any existing background
+        if (this.lobbyBg) {
+            this.lobbyBg.destroy();
+        }
+        
+        // Create static lobby background
+        this.lobbyBg = this.scene.add.image(400, 300, 'LobbyBackG')
             .setOrigin(0.5)
-            .setDepth(0);
-
-        // Create animations for each spritesheet
-        ['lobbyBg0', 'lobbyBg1', 'lobbyBg2'].forEach((key, index) => {
-            this.scene.anims.create({
-                key: `${key}Animation`,
-                frames: this.scene.anims.generateFrameNumbers(key, { start: 0, end: -1 }),
-                frameRate: 10,
-                repeat: 0
-            });
-        });
-}
-    }
-
+            .setDepth(0)
+            .setDisplaySize(800, 600);
+        
     createHeader() {
         const headerKey = this.scene.currentLanguage === 'en' ? 'lobbyHeader' : 'lobbyHeaderLoc';
         this.lobbyHeader = this.scene.add.sprite(400, 50, headerKey);
@@ -111,21 +87,6 @@ class LobbyInterface {
             .setTint(0xffffff);
     }
 
-    playBackgroundAnimations() {
-        // Only play animations if we have an animated background
-        if (this.scene.gameplayStyle !== 'touch' && this.lobbyBg && this.lobbyBg.play) {
-            const playAnimationsInSequence = (index = 0) => {
-                const keys = ['lobbyBg0', 'lobbyBg1', 'lobbyBg2'];
-                const key = keys[index];
-                this.lobbyBg.play(`${key}Animation`);
-                this.lobbyBg.once('animationcomplete', () => {
-                    const nextIndex = (index + 1) % keys.length;
-                    playAnimationsInSequence(nextIndex);
-                });
-            };
-            playAnimationsInSequence();
-        }
-    }
 
     updateLobbyScreen(screen) {
         if (screen === this.currentScreen && screen !== 'lobby') {
