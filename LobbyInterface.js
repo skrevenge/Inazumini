@@ -34,6 +34,7 @@ class LobbyInterface {
             .setOrigin(0.5)
             .setDepth(0)
             .setDisplaySize(800, 600);
+    }
         
     createHeader() {
         const headerKey = this.scene.currentLanguage === 'en' ? 'lobbyHeader' : 'lobbyHeaderLoc';
