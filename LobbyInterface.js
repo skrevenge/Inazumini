@@ -15,13 +15,17 @@ class LobbyInterface {
     }
 
     create(activeScreen = 'lobby') {
+        // Clean up existing scene elements
+        this.scene.children.getAll().forEach(child => {
+            child.destroy();
+        });
+        
         this.currentScreen = activeScreen;
         this.createBackground();
         this.createHeader();
         this.createButtons();
         this.createMessageText();
         this.updateLobbyScreen(this.currentScreen);
-    }
 
     createBackground() {
         // Clear any existing background
@@ -34,6 +38,12 @@ class LobbyInterface {
             .setOrigin(0.5)
             .setDepth(0)
             .setDisplaySize(800, 600);
+        
+        // Create a full-screen interactive area to prevent interaction with elements below
+        this.fullScreenInteractive = this.scene.add.rectangle(400, 300, 800, 600, 0x000000, 0)
+            .setOrigin(0.5)
+            .setDepth(0)
+            .setInteractive();
     }
         
     createHeader() {
