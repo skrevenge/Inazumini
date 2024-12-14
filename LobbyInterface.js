@@ -26,6 +26,7 @@ class LobbyInterface {
         this.createButtons();
         this.createMessageText();
         this.updateLobbyScreen(this.currentScreen);
+    }
 
     createBackground() {
         // Clear any existing background
