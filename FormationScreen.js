@@ -196,10 +196,6 @@ class FormationScreen {
         });
     }
 
-    // All the other methods from the Example class related to formation...
-    // (getFormationPositions, displayFormation, updatePlayerDetails, handleMovePlayer, etc.)
-    // Should be copied here exactly as they are, just removing 'this.scene.' where appropriate
-
     showChangesSaved() {
         if (this.changesSavedText) {
             this.changesSavedText.setVisible(true);
