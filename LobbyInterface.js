@@ -186,7 +186,7 @@ class LobbyInterface {
         const portrait = this.scene.add.image(portraitX + portraitWidth / 2, portraitY + 100, 'raiTeiPortrait', playerData.portraitFrame);
         portrait.setOrigin(0.5, 0).setDisplaySize(portraitWidth, portraitHeight).setDepth(2);
 
-        const borderFrame = this.scene.getRarityFrame(playerData.rarity);
+        const borderFrame = this.scene.playerStats.getRarityFrame(playerData.rarity);
         const portraitBorder = this.scene.add.image(portraitX + portraitWidth / 2, portraitY + 100, 'frameBorder', borderFrame);
         portraitBorder.setOrigin(0.5, 0).setDisplaySize(portraitWidth + 6, portraitHeight + 6).setDepth(2);
     }
