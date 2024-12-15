@@ -78,7 +78,7 @@ class FormationScreen {
     }
 
     createField() {
-        this.formationElements.field = this.scene.add.image(170, 290, 'formField').setOrigin(0.5);
+        this.formationElements.field = this.scene.sceneMethods.add.image(170, 290, 'formField').setOrigin(0.5);
     }
 
     createFormationButton() {
