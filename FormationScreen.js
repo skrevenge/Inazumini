@@ -688,36 +688,6 @@ class FormationScreen {
 
     }
 
-    getRarityFrame(rarity) {
-        switch (rarity) {
-            case 'Normal':
-                return 0;
-            case 'Rare':
-                return 1;
-            case 'Super Rare':
-                return 2;
-            case 'Ultra Rare':
-                return 3;
-            case 'Legend':
-                return 4;
-            default:
-                return 0;
-        }
-    }
-    getAttributeFrame(attribute) {
-        switch (attribute) {
-            case 'Fire':
-                return 0;
-            case 'Earth':
-                return 1;
-            case 'Wood':
-                return 2;
-            case 'Wind':
-                return 3;
-            default:
-                return 0; // Default to Fire if attribute is not recognized
-        }
-    }
     getPlayerPosition(playerIndex) {
         // Get current formation positions
         const positions = this.getFormationPositions()[this.currentFormation];
