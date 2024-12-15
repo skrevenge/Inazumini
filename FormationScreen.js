@@ -1,6 +1,22 @@
 class FormationScreen {
-    constructor(scene) {
-        this.scene = scene;
+    constructor(config) {
+        // Store scene reference and configuration
+        this.scene = config.scene;
+        this.selectedPlayer = config.selectedPlayer;
+        this.currentFormation = config.currentFormation;
+        this.playerStats = config.playerStats;
+        this.selectedNameStyle = config.selectedNameStyle;
+        this.localization = config.localization;
+        this.currentLanguage = config.currentLanguage;
+        
+        // Store utility methods
+        this.getRarityFrame = config.utilityMethods.getRarityFrame;
+        this.getAttributeFrame = config.utilityMethods.getAttributeFrame;
+        this.getPlayerPosition = config.utilityMethods.getPlayerPosition;
+        this.getFormationPositions = config.utilityMethods.getFormationPositions;
+        this.saveGameData = config.utilityMethods.saveGameData;
+
+        // Initialize class properties
         this.formationElements = {
             field: null,
             players: [],
@@ -9,8 +25,6 @@ class FormationScreen {
         };
         this.isMovingPlayer = false;
         this.sourcePlayerIndex = null;
-        this.selectedPlayer = 0;
-        this.currentFormation = '2-1-2';
         this.swapIndicators = [];
         this.selectionIndicator = null;
         this.playerDetailsGroup = null;
@@ -41,27 +55,20 @@ class FormationScreen {
 
     clearExistingElements() {
         if (this.formationElements) {
-            // Clean up field
             if (this.formationElements.field) {
                 this.formationElements.field.destroy();
             }
-
-            // Clean up players
             if (this.formationElements.players) {
                 this.formationElements.players.forEach(player => {
                     if (player.body) player.body.destroy();
                     if (player.head) player.head.destroy();
                 });
             }
-
-            // Clean up buttons
             if (this.formationElements.buttons) {
                 this.formationElements.buttons.forEach(button => {
                     if (button && button.destroy) button.destroy();
                 });
             }
-
-            // Clean up texts
             if (this.formationElements.texts) {
                 this.formationElements.texts.forEach(text => {
                     if (text && text.destroy) text.destroy();
@@ -89,7 +96,6 @@ class FormationScreen {
     }
 
     createFichas() {
-        // Create FormFichaBlue images
         this.formFichaBlue1 = this.scene.add.image(580, 290, 'FormFichaBlue')
             .setOrigin(0.5)
             .setDepth(2);
@@ -100,17 +106,15 @@ class FormationScreen {
             .setDepth(1)
             .setAlpha(0.75);
 
-        // Add Stats and Hissatsu text labels
         const statsText = this.scene.add.bitmapText(440, 135, 'customFont', 
-            this.scene.localization[this.scene.currentLanguage]['Stats_Stats'], 38)
+            this.localization[this.currentLanguage]['Stats_Stats'], 38)
             .setOrigin(0, 0.5)
             .setDepth(2);
 
-        // Add player portrait and details to ficha 1
         this.updatePlayerDetails(this.selectedPlayer);
 
         const hissatsuText = this.scene.add.bitmapText(750, 135, 'customFont',
-            this.scene.localization[this.scene.currentLanguage]['Stats_Hissatsu'], 38)
+            this.localization[this.currentLanguage]['Stats_Hissatsu'], 38)
             .setOrigin(1, 0.5)
             .setDepth(3)
             .setAlpha(0.75);
@@ -126,11 +130,15 @@ class FormationScreen {
 
         const updateTogglePosition = () => {
             if (this.formFichaBlue1.depth === 2) {
-                toggleButton.setPosition(this.formFichaBlue1.x + this.formFichaBlue1.width / 2 - 200,
-                    this.formFichaBlue1.y - this.formFichaBlue1.height / 2);
+                toggleButton.setPosition(
+                    this.formFichaBlue1.x + this.formFichaBlue1.width / 2 - 200,
+                    this.formFichaBlue1.y - this.formFichaBlue1.height / 2
+                );
             } else {
-                toggleButton.setPosition(this.formFichaBlue1.x - this.formFichaBlue1.width / 2 + 5,
-                    this.formFichaBlue1.y - this.formFichaBlue1.height / 2);
+                toggleButton.setPosition(
+                    this.formFichaBlue1.x - this.formFichaBlue1.width / 2 + 5,
+                    this.formFichaBlue1.y - this.formFichaBlue1.height / 2
+                );
             }
         };
 
@@ -164,7 +172,7 @@ class FormationScreen {
 
     createChangesSavedText() {
         this.changesSavedText = this.scene.add.bitmapText(640, 505, 'customFont',
-            this.scene.localization[this.scene.currentLanguage]['savedChanges'], 30)
+            this.localization[this.currentLanguage]['savedChanges'], 30)
             .setOrigin(0.5)
             .setDepth(2)
             .setVisible(false);
@@ -278,191 +286,8 @@ class FormationScreen {
             });
         });
     }
-    showFormationOptions() {
-        // Clear existing formation options if any
-        if (this.formationOptions) {
-            this.formationOptions.forEach(option => {
-                option.btn.destroy();
-                option.text.destroy();
-            });
-        }
 
-        const formations = ['3-1-1', '2-2-1', '2-1-2', '1-3-1', '1-2-2'];
-        this.formationOptions = formations.map((formation, index) => {
-            const yPos = 460 - (index * 40);
-
-            const btn = this.add.image(150, yPos, 'button')
-                .setInteractive()
-                .setDepth(3)
-                .on('pointerdown', () => {
-                    this.handleFormationSelection(formation);
-                });
-
-            const text = this.add.text(150, yPos, formation, {
-                    fontSize: '20px',
-                    fill: '#ffffff'
-                })
-                .setOrigin(0.5)
-                .setDepth(3);
-
-            return {
-                btn,
-                text
-            };
-        });
-    }
-
-    handleFormationSelection(formation) {
-        // Update formation text
-        this.formationElements.texts[0].setText(formation);
-        // Store the current formation temporarily
-        const previousFormation = this.currentFormation;
-        // Update current formation immediately for position calculation
-        this.currentFormation = formation;
-        // Save the game after formation change
-        this.saveGameData();
-        // Get new positions for the formation
-        const newPositions = this.getFormationPositions()[formation];
-        // Update selection indicator position before displaying new formation
-        if (this.selectionIndicator && this.selectedPlayer !== undefined) {
-            const newPos = newPositions[this.selectedPlayer];
-            this.selectionIndicator.x = newPos.x;
-            this.selectionIndicator.y = newPos.y - 25;
-        }
-        // Display new formation
-        this.displayFormation(formation);
-        // Update player details to reflect new position
-        if (this.selectedPlayer !== undefined) {
-            this.updatePlayerDetails(this.selectedPlayer);
-        }
-        // Show 'Changes Saved' message
-        this.showChangesSaved();
-        // Clear formation options
-        if (this.formationOptions) {
-            this.formationOptions.forEach(option => {
-                option.btn.destroy();
-                option.text.destroy();
-            });
-            this.formationOptions = null;
-        }
-    }
-
-    showChangesSaved() {
-        // First save the game
-        this.saveGameData();
-
-        // Then show the text
-        if (this.changesSavedText) {
-            this.changesSavedText.setVisible(true);
-            // Hide it after 2 seconds
-            this.time.delayedCall(2000, () => {
-                if (this.changesSavedText?.active) {
-                    this.changesSavedText.setVisible(false);
-                }
-            });
-        }
-    }
-    // Methods removed as they are now in MainMenu class
-    getFormationPositions() {
-        return {
-            '3-1-1': [{
-                x: 170,
-                y: 470
-            }, {
-                x: 100,
-                y: 400
-            }, {
-                x: 170,
-                y: 400
-            }, {
-                x: 240,
-                y: 400
-            }, {
-                x: 170,
-                y: 250
-            }, {
-                x: 170,
-                y: 150
-            }],
-            '2-2-1': [{
-                x: 170,
-                y: 470
-            }, {
-                x: 120,
-                y: 400
-            }, {
-                x: 220,
-                y: 400
-            }, {
-                x: 120,
-                y: 250
-            }, {
-                x: 220,
-                y: 250
-            }, {
-                x: 170,
-                y: 150
-            }],
-            '2-1-2': [{
-                x: 170,
-                y: 470
-            }, {
-                x: 120,
-                y: 400
-            }, {
-                x: 220,
-                y: 400
-            }, {
-                x: 170,
-                y: 300
-            }, {
-                x: 120,
-                y: 170
-            }, {
-                x: 220,
-                y: 170
-            }],
-            '1-3-1': [{
-                x: 170,
-                y: 470
-            }, {
-                x: 170,
-                y: 400
-            }, {
-                x: 100,
-                y: 250
-            }, {
-                x: 170,
-                y: 250
-            }, {
-                x: 240,
-                y: 250
-            }, {
-                x: 170,
-                y: 150
-            }],
-            '1-2-2': [{
-                x: 170,
-                y: 470
-            }, {
-                x: 170,
-                y: 400
-            }, {
-                x: 120,
-                y: 300
-            }, {
-                x: 220,
-                y: 300
-            }, {
-                x: 120,
-                y: 170
-            }, {
-                x: 220,
-                y: 170
-            }]
-        };
-    }
-    updatePlayerDetails(playerIndex) {
+        updatePlayerDetails(playerIndex) {
         // Clear previous details if they exist
         if (this.playerDetailsGroup) {
             this.playerDetailsGroup.clear(true, true);
@@ -604,7 +429,7 @@ class FormationScreen {
         this.moveText = moveText;
     }
 
-    handleMovePlayer() {
+        handleMovePlayer() {
         if (!this.isMovingPlayer) {
             // Enter move player mode
             this.isMovingPlayer = true;
@@ -654,7 +479,7 @@ class FormationScreen {
         }
     }
 
-    cancelMovePlayer() {
+        cancelMovePlayer() {
         this.isMovingPlayer = false;
         this.moveText.setText('Move\nPlayer');
 
@@ -688,20 +513,173 @@ class FormationScreen {
 
     }
 
-    getPlayerPosition(playerIndex) {
-        // Get current formation positions
-        const positions = this.getFormationPositions()[this.currentFormation];
-        const playerY = positions[playerIndex].y;
-        // Determine position based on Y coordinate
-        if (playerIndex === 0) {
-            return 'GK';
-        } else if (playerY >= 400) {
-            return 'DF';
-        } else if (playerY >= 250) {
-            return 'MF';
-        } else {
-            return 'FW';
+        showFormationOptions() {
+        // Clear existing formation options if any
+        if (this.formationOptions) {
+            this.formationOptions.forEach(option => {
+                option.btn.destroy();
+                option.text.destroy();
+            });
         }
+
+        const formations = ['3-1-1', '2-2-1', '2-1-2', '1-3-1', '1-2-2'];
+        this.formationOptions = formations.map((formation, index) => {
+            const yPos = 460 - (index * 40);
+
+            const btn = this.add.image(150, yPos, 'button')
+                .setInteractive()
+                .setDepth(3)
+                .on('pointerdown', () => {
+                    this.handleFormationSelection(formation);
+                });
+
+            const text = this.add.text(150, yPos, formation, {
+                    fontSize: '20px',
+                    fill: '#ffffff'
+                })
+                .setOrigin(0.5)
+                .setDepth(3);
+
+            return {
+                btn,
+                text
+            };
+        });
+    }
+
+    handleFormationSelection(formation) {
+        // Update formation text
+        this.formationElements.texts[0].setText(formation);
+        // Store the current formation temporarily
+        const previousFormation = this.currentFormation;
+        // Update current formation immediately for position calculation
+        this.currentFormation = formation;
+        // Save the game after formation change
+        this.saveGameData();
+        // Get new positions for the formation
+        const newPositions = this.getFormationPositions()[formation];
+        // Update selection indicator position before displaying new formation
+        if (this.selectionIndicator && this.selectedPlayer !== undefined) {
+            const newPos = newPositions[this.selectedPlayer];
+            this.selectionIndicator.x = newPos.x;
+            this.selectionIndicator.y = newPos.y - 25;
+        }
+        // Display new formation
+        this.displayFormation(formation);
+        // Update player details to reflect new position
+        if (this.selectedPlayer !== undefined) {
+            this.updatePlayerDetails(this.selectedPlayer);
+        }
+        // Show 'Changes Saved' message
+        this.showChangesSaved();
+        // Clear formation options
+        if (this.formationOptions) {
+            this.formationOptions.forEach(option => {
+                option.btn.destroy();
+                option.text.destroy();
+            });
+            this.formationOptions = null;
+        }
+    }
+
+        getFormationPositions() {
+        return {
+            '3-1-1': [{
+                x: 170,
+                y: 470
+            }, {
+                x: 100,
+                y: 400
+            }, {
+                x: 170,
+                y: 400
+            }, {
+                x: 240,
+                y: 400
+            }, {
+                x: 170,
+                y: 250
+            }, {
+                x: 170,
+                y: 150
+            }],
+            '2-2-1': [{
+                x: 170,
+                y: 470
+            }, {
+                x: 120,
+                y: 400
+            }, {
+                x: 220,
+                y: 400
+            }, {
+                x: 120,
+                y: 250
+            }, {
+                x: 220,
+                y: 250
+            }, {
+                x: 170,
+                y: 150
+            }],
+            '2-1-2': [{
+                x: 170,
+                y: 470
+            }, {
+                x: 120,
+                y: 400
+            }, {
+                x: 220,
+                y: 400
+            }, {
+                x: 170,
+                y: 300
+            }, {
+                x: 120,
+                y: 170
+            }, {
+                x: 220,
+                y: 170
+            }],
+            '1-3-1': [{
+                x: 170,
+                y: 470
+            }, {
+                x: 170,
+                y: 400
+            }, {
+                x: 100,
+                y: 250
+            }, {
+                x: 170,
+                y: 250
+            }, {
+                x: 240,
+                y: 250
+            }, {
+                x: 170,
+                y: 150
+            }],
+            '1-2-2': [{
+                x: 170,
+                y: 470
+            }, {
+                x: 170,
+                y: 400
+            }, {
+                x: 120,
+                y: 300
+            }, {
+                x: 220,
+                y: 300
+            }, {
+                x: 120,
+                y: 170
+            }, {
+                x: 220,
+                y: 170
+            }]
+        };
     }
 
     showChangesSaved() {
