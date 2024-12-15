@@ -220,6 +220,7 @@ class LobbyInterface {
 
         const rarityFrame = this.playerStats.getRarityFrame(playerData.rarity);
         const raritySprite = this.scene.add.image(infoX, infoY + 50, 'raritySprite', rarityFrame);
+        raritySprite.setOrigin(0.5, 0).setDepth(5).setScale(0.8);
 
         const attributeFrame = this.playerStats.getAttributeFrame(playerData.attribute);
         const attributeSprite = this.scene.add.image(infoX, infoY + 85, 'attributes', attributeFrame);
