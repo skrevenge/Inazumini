@@ -217,11 +217,11 @@ class LobbyInterface {
         this.addText(infoX, infoY, displayName, '20px');
         this.addText(infoX, infoY + 25, `Lv.${playerData.level}`, '20px');
 
-        const rarityFrame = this.scene.getRarityFrame(playerData.rarity);
+        const rarityFrame = this.scene.playerStats.getRarityFrame(playerData.rarity);
         const raritySprite = this.scene.add.image(infoX, infoY + 50, 'raritySprite', rarityFrame);
         raritySprite.setOrigin(0.5, 0).setDepth(5);
 
-        const attributeFrame = this.scene.getAttributeFrame(playerData.attribute);
+        const attributeFrame = this.scene.playerStats.getAttributeFrame(playerData.attribute);
         const attributeSprite = this.scene.add.image(infoX, infoY + 85, 'attributes', attributeFrame);
         attributeSprite.setOrigin(0.5, 0).setDepth(5).setScale(0.8);
 
