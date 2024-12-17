@@ -272,20 +272,24 @@ class FormationLogic {
         this.currentFormation = newFormation;
         const formationText = this.formationElements.players[1];
         formationText.setText(newFormation);
-        this.formationElements.players.forEach(player => {
+        
+        // Clear existing player sprites
+        this.formationElements.players = this.formationElements.players.filter(player => {
             if (player instanceof Phaser.GameObjects.Image &&
                 (player.texture.key === 'raimonBody' || player.texture.key === 'raimonHead')) {
                 player.destroy();
+                return false;
             }
+            return true;
         });
+        
+        // Reset selected player to goalkeeper (0) when changing formation
+        this.scene.selectedPlayer = 0;
+        
+        // Reposition players and update visuals
         this.positionPlayersInFormation(180, 100);
-        // Update selection indicator and player portrait after formation change
-        if (this.scene.updateSelectionIndicator) {
-            this.scene.updateSelectionIndicator();
-        }
-        if (this.scene.updatePlayerPortrait) {
-            this.scene.updatePlayerPortrait();
-        }
+        this.scene.updateSelectionIndicator();
+        this.scene.updatePlayerPortrait();
         this.scene.saveGameData();
     }
 
