@@ -300,9 +300,9 @@ class FormationLogic {
 
         if (playerIndex === 0) {
             return 'GK';
-        } else if (playerY >= 300) {
+        } else if (playerY >= 370) {
             return 'DF';
-        } else if (playerY >= 250) {
+        } else if (playerY >= 290) {
             return 'MF';
         } else {
             return 'FW';
