@@ -279,6 +279,13 @@ class FormationLogic {
             }
         });
         this.positionPlayersInFormation(180, 100);
+        // Update selection indicator and player portrait after formation change
+        if (this.scene.updateSelectionIndicator) {
+            this.scene.updateSelectionIndicator();
+        }
+        if (this.scene.updatePlayerPortrait) {
+            this.scene.updatePlayerPortrait();
+        }
         this.scene.saveGameData();
     }
 
