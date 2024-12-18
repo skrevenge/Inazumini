@@ -116,6 +116,13 @@ class LobbyInterface {
 
         [this.leftSideBt, this.centerBt, this.rightSideBt].forEach(btn => btn.clearTint());
 
+        // If we're leaving the formation screen, make sure to exit swap mode
+        if (this.currentScreen === 'formation' && screen !== 'formation') {
+            if (this.scene.isSwapMode) {
+                this.scene.exitSwapMode();
+            }
+        }
+        
         switch (screen) {
             case 'inventory':
                 this.leftSideBt.setTint(0x808080);
