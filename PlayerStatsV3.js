@@ -262,9 +262,9 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankLegend: [25, 20, 9, 10, 10, 10, 15]
                 },
                 RankRHst: ['GodHand', 'BakkunetsuPunch'],
-                RankSRHst: ['GodHand', 'BakkunetsuPunch', 'MajinTH'],
-                RankURHst: ['GodHand', 'BPunch', 'MajinTH', 'FistJ'],
-                RankLHst: ['GodHand', 'BPunch', 'MajinTH', 'FistJ', 'HammerW']
+                RankSRHst: ['GodHand', 'BakkunetsuPunch', 'MajinTheHand'],
+                RankURHst: ['GodHand', 'BakkunetsuPunch', 'MajinTheHand', 'FistOfJustice'],
+                RankLHst: ['GodHand', 'BakkunetsuPunch', 'MajinTheHand', 'FistOfJustice', 'HammerOfWrath']
             }),
             'nathanSwift': new PlayerStats.Character({
                 name: 'Nathan Swift',
