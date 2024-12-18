@@ -242,6 +242,7 @@ class FormationLogic {
                 const button = this.scene.add.image(x, baseY - ((index + 1) * spacing), 'button');
                 const text = this.scene.add.bitmapText(x, baseY - ((index + 1) * spacing), 'customFont', formation, 30)
                     .setOrigin(0.5)
+                    .setDepth(5)
                     .setTint(0xFFFFFF);
 
                 button.setOrigin(0.5).setInteractive();
