@@ -242,7 +242,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 speed: 70,
                 strength: 75,
                 keeper: 90,
-                hissatsu: ['GHand'],
+                hissatsu: ['GodHand'],
                 headSpriteConfig: {
                     key: 'raimonHead',
                     frames: [0, 1, 2, 3, 4, 5, 6, 7]
@@ -261,10 +261,10 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [20, 16, 7, 8, 8, 8, 12],
                     RankLegend: [25, 20, 9, 10, 10, 10, 15]
                 },
-                RankRHst: ['GHand', 'BPunch'],
-                RankSRHst: ['GHand', 'BPunch', 'MajinTH'],
-                RankURHst: ['GHand', 'BPunch', 'MajinTH', 'FistJ'],
-                RankLHst: ['GHand', 'BPunch', 'MajinTH', 'FistJ', 'HammerW']
+                RankRHst: ['GodHand', 'BakkunetsuPunch'],
+                RankSRHst: ['GodHand', 'BakkunetsuPunch', 'MajinTH'],
+                RankURHst: ['GodHand', 'BPunch', 'MajinTH', 'FistJ'],
+                RankLHst: ['GodHand', 'BPunch', 'MajinTH', 'FistJ', 'HammerW']
             }),
             'nathanSwift': new PlayerStats.Character({
                 name: 'Nathan Swift',
