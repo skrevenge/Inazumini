@@ -299,7 +299,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 RankRHst: ['ShippuuDash'],
                 RankSRHst: ['ShippuuDash', 'BunshinDefense'],
                 RankURHst: ['Shippuu Dash', ''BunshinDefense', 'HonooKazamidori'],
-                RankLHst: ['Shippuu Dash', 'BunshinDefense', 'HonooKazamidori', 'Fuujin no Mai']
+                RankLHst: ['Shippuu Dash', 'BunshinDefense', 'HonooNoKazamidori', 'FuujinNoMai']
             }),
             'axelBlaze': new PlayerStats.Character({
                 name: 'Axel Blaze',
@@ -312,7 +312,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 speed: 70,
                 strength: 75,
                 keeper: 90,
-                hissatsu: ['God Hand', 'Burning Punch'],
+                hissatsu: ['FireTornado'],
                 headSpriteConfig: {
                     key: 'raimonHead',
                     frames: [16, 17, 18, 19, 20, 21, 22, 23]
@@ -331,9 +331,9 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [20, 16, 7, 8, 8, 8, 12],
                     RankLegend: [25, 20, 9, 10, 10, 10, 15]
                 },
-                RankRHst: ['God Hand'],
-                RankSRHst: ['God Hand', 'MajinTH'],
-                RankURHst: ['God Hand', 'MajinTH', 'Fist of Justice'],
+                RankRHst: ['FireTornado'],
+                RankSRHst: ['FireTornado', 'MajinTH'],
+                RankURHst: ['FireTornado', 'MajinTH', 'Fist of Justice'],
                 RankLHst: ['God Hand', 'MajinTH', 'Fist of Justice', 'Hammer of Wrath']
             }),
            'jackWallside': new PlayerStats.Character({
