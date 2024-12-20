@@ -242,7 +242,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 speed: 70,
                 strength: 75,
                 keeper: 90,
-                hissatsu: ['GodHand'],
+                hissatsu: ['GodHand', 'BakkunetsuPunch'],
                 headSpriteConfig: {
                     key: 'raimonHead',
                     frames: [0, 1, 2, 3, 4, 5, 6, 7]
