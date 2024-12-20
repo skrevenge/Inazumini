@@ -296,10 +296,10 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [16, 20, 8, 10, 12, 8, 6],
                     RankLegend: [20, 25, 10, 12, 15, 10, 8]
                 },
-                RankRHst: ['Shippuu Dash'],
-                RankSRHst: ['Shippuu Dash', 'Dark Phoenix'],
-                RankURHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense'],
-                RankLHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense', 'Fuujin no Mai']
+                RankRHst: ['ShippuuDash'],
+                RankSRHst: ['ShippuuDash', 'BunshinDefense'],
+                RankURHst: ['Shippuu Dash', ''BunshinDefense', 'HonooKazamidori'],
+                RankLHst: ['Shippuu Dash', 'BunshinDefense', 'HonooKazamidori', 'Fuujin no Mai']
             }),
             'axelBlaze': new PlayerStats.Character({
                 name: 'Axel Blaze',
