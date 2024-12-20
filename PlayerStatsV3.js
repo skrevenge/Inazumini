@@ -298,7 +298,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 },
                 RankRHst: ['ShippuuDash'],
                 RankSRHst: ['ShippuuDash', 'BunshinDefense'],
-                RankURHst: ['Shippuu Dash', ''BunshinDefense', 'HonooKazamidori'],
+                RankURHst: ['Shippuu Dash', 'BunshinDefense', 'HonooKazamidori'],
                 RankLHst: ['Shippuu Dash', 'BunshinDefense', 'HonooNoKazamidori', 'FuujinNoMai']
             }),
             'axelBlaze': new PlayerStats.Character({
@@ -332,9 +332,9 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankLegend: [25, 20, 9, 10, 10, 10, 15]
                 },
                 RankRHst: ['FireTornado'],
-                RankSRHst: ['FireTornado', 'MajinTH'],
-                RankURHst: ['FireTornado', 'MajinTH', 'Fist of Justice'],
-                RankLHst: ['God Hand', 'MajinTH', 'Fist of Justice', 'Hammer of Wrath']
+                RankSRHst: ['FireTornado', 'BakkunetsuStorm'],
+                RankURHst: ['FireTornado', 'BakkunetsuStorm', 'HeatTackle'],
+                RankLHst: ['God Hand', 'BakkunetsuStorm', 'HeatTackle', 'BakkunetsuScrew']
             }),
            'jackWallside': new PlayerStats.Character({
                 name: 'Jack Wallside',
@@ -347,7 +347,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 speed: 70,
                 strength: 75,
                 keeper: 90,
-                hissatsu: ['God Hand', 'Burning Punch'],
+                hissatsu: ['TheWall'],
                 headSpriteConfig: {
                     key: 'raimonHead',
                     frames: [24, 25, 26, 27, 28, 29, 30, 31]
@@ -366,10 +366,10 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [20, 16, 7, 8, 8, 8, 12],
                     RankLegend: [25, 20, 9, 10, 10, 10, 15]
                 },
-                RankRHst: ['God Hand'],
-                RankSRHst: ['God Hand', 'MajinTH'],
-                RankURHst: ['God Hand', 'MajinTH', 'Fist of Justice'],
-                RankLHst: ['God Hand', 'MajinTH', 'Fist of Justice', 'Hammer of Wrath']
+                RankRHst: ['TheWall'],
+                RankSRHst: ['TheWall', 'MajinTH'],
+                RankURHst: ['TheWall', 'MajinTH', 'Fist of Justice'],
+                RankLHst: ['TheWall', 'MajinTH', 'Fist of Justice', 'Hammer of Wrath']
             }),
           'todIronside': new PlayerStats.Character({
                 name: 'Tod Ironside',
