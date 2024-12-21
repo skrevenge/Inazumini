@@ -261,10 +261,10 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [20, 16, 7, 8, 8, 8, 12],
                     RankLegend: [25, 20, 9, 10, 10, 10, 15]
                 },
-                RankRHst: ['GodHand', 'BakkunetsuPunch'],
-                RankSRHst: ['GodHand', 'BakkunetsuPunch', 'MajinTheHand'],
-                RankURHst: ['GodHand', 'BakkunetsuPunch', 'MajinTheHand', 'FistOfJustice'],
-                RankLHst: ['GodHand', 'BakkunetsuPunch', 'MajinTheHand', 'FistOfJustice', 'HammerOfWrath']
+                RankRHst: ['GodHand', 'NekketsuPunch'],
+                RankSRHst: ['GodHand', 'NekketsuPunch', 'Inazuma1Go'],
+                RankURHst: ['GodHand', 'NekketsuPunch', 'Inazuma1Go', 'InazumaBreak'],
+                RankLHst: ['GodHand', 'NekketsuPunch', 'Inazuma1Go', 'InazumaBreak', 'MajinTheHand']
             }),
             'nathanSwift': new PlayerStats.Character({
                 name: 'Nathan Swift',
@@ -277,7 +277,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 speed: 90,
                 strength: 65,
                 keeper: 40,
-                hissatsu: ['Shippuu Dash', 'Dark Phoenix'],
+                hissatsu: ['ShippuuDash', 'BunshinDefense'],
                 headSpriteConfig: {
                     key: 'raimonHead',
                     frames: [8, 9, 10, 11, 12, 13, 14, 15]
@@ -299,7 +299,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 RankRHst: ['ShippuuDash'],
                 RankSRHst: ['ShippuuDash', 'BunshinDefense'],
                 RankURHst: ['Shippuu Dash', 'BunshinDefense', 'HonooKazamidori'],
-                RankLHst: ['Shippuu Dash', 'BunshinDefense', 'HonooNoKazamidori', 'FuujinNoMai']
+                RankLHst: ['Shippuu Dash', 'BunshinDefense', 'HonooNoKazamidori', 'SpinningCut']
             }),
             'axelBlaze': new PlayerStats.Character({
                 name: 'Axel Blaze',
@@ -332,9 +332,9 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankLegend: [25, 20, 9, 10, 10, 10, 15]
                 },
                 RankRHst: ['FireTornado'],
-                RankSRHst: ['FireTornado', 'BakkunetsuStorm'],
-                RankURHst: ['FireTornado', 'BakkunetsuStorm', 'HeatTackle'],
-                RankLHst: ['God Hand', 'BakkunetsuStorm', 'HeatTackle', 'BakkunetsuScrew']
+                RankSRHst: ['FireTornado', 'InazumaOtoshi'],
+                RankURHst: ['FireTornado', 'InazumaDrop', 'HeatTackle'],
+                RankLHst: ['FireTornado', 'BakkunetsuStorm', 'HeatTackle', 'MaximumFire']
             }),
            'jackWallside': new PlayerStats.Character({
                 name: 'Jack Wallside',
@@ -367,22 +367,22 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankLegend: [25, 20, 9, 10, 10, 10, 15]
                 },
                 RankRHst: ['TheWall'],
-                RankSRHst: ['TheWall', 'MajinTH'],
-                RankURHst: ['TheWall', 'MajinTH', 'Fist of Justice'],
-                RankLHst: ['TheWall', 'MajinTH', 'Fist of Justice', 'Hammer of Wrath']
+                RankSRHst: ['TheWall', 'MoguraFeint'],
+                RankURHst: ['TheWall', 'MoguraFeint', 'MegaQuake'],
+                RankLHst: ['TheWall', 'MoguraFeint', 'MegaQuake', 'SuperArmadillo']
             }),
           'todIronside': new PlayerStats.Character({
                 name: 'Tod Ironside',
                 undubName: 'Teppei Kurimatsu',
                 TP: 160,
                 FP: 180,
-                attribute: 'Wind',
+                attribute: 'Fire',
                 shoot: 60,
                 dribble: 80,
                 speed: 90,
                 strength: 65,
                 keeper: 40,
-                hissatsu: ['Shippuu Dash', 'Dark Phoenix'],
+                hissatsu: ['TamanoriPierrot', 'Dark Phoenix'],
                 headSpriteConfig: {
                     key: 'raimonHead',
                     frames: [32, 33, 34, 35, 36, 37, 38, 39]
@@ -401,10 +401,10 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [16, 20, 8, 10, 12, 8, 6],
                     RankLegend: [20, 25, 10, 12, 15, 10, 8]
                 },
-                RankRHst: ['Shippuu Dash'],
-                RankSRHst: ['Shippuu Dash', 'Dark Phoenix'],
-                RankURHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense'],
-                RankLHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense', 'Fuujin no Mai']
+                RankRHst: ['TamanoriPierrot'],
+                RankSRHst: ['TamanoriPierrot', 'MonkeyTurn'],
+                RankURHst: ['TamanoriPierrot', 'MonkeyTurn', 'SuiseiShot'],
+                RankLHst: ['TamanoriPierrot', 'MonkeyTurn', 'SuiseiShot', 'RunBallRun']
             }),
           'kevinDragonfly': new PlayerStats.Character({
                 name: 'Kevin Dragonfly',
@@ -417,7 +417,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 speed: 90,
                 strength: 65,
                 keeper: 40,
-                hissatsu: ['Shippuu Dash', 'Dark Phoenix'],
+                hissatsu: ['DragonCrash'],
                 headSpriteConfig: {
                     key: 'raimonHead',
                     frames: [40, 41, 42, 43, 44, 45, 46, 47]
@@ -436,10 +436,10 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [16, 20, 8, 10, 12, 8, 6],
                     RankLegend: [20, 25, 10, 12, 15, 10, 8]
                 },
-                RankRHst: ['Shippuu Dash'],
-                RankSRHst: ['Shippuu Dash', 'Dark Phoenix'],
-                RankURHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense'],
-                RankLHst: ['Shippuu Dash', 'Dark Phoenix', 'Bunshin Defense', 'Fuujin no Mai']
+                RankRHst: ['DragonCrash'],
+                RankSRHst: ['DragonCrash', 'ZigZagSpark'],
+                RankURHst: ['DragonCrash', 'ZigZagSpark', 'DragonTornado'],
+                RankLHst: ['DragonCrash', 'ZigZagSpark', 'DragonTornado', 'MeganeCrash']
             }),
             // Add more players here as needed
         };
