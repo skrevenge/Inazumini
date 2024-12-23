@@ -9,7 +9,7 @@ class HissatsuDatabase {
                 attribute: "Earth",
                 type: "Catch",
                 power: 50,
-                starRank: 3,
+                starRank: 1,
                 hPortrait: 0,
                 animation: null // Will be implemented later
             },
@@ -34,7 +34,7 @@ class HissatsuDatabase {
                 type: "Shoot",
                 power: 70,
                 starRank: 1,
-                hPortrait: 1,
+                hPortrait: 2,
                 animation: null // Will be implemented later
             },
             'TheWall': {
@@ -46,19 +46,31 @@ class HissatsuDatabase {
                 type: "Defense",
                 power: 50,
                 starRank: 1,
-                hPortrait: 1,
+                hPortrait: 4,
                 animation: null // Will be implemented later
             },
             'ShippuuDash': {
                 name: "Wind Dash",
-                undub_name: "Shipuu Dash",
+                undub_name: "Shippuu Dash",
                 loc_name: "Deslize Veloz", 
                 tp_cost: 30,
                 attribute: "Wind",
                 type: "Dribble",
                 power: 60,
                 starRank: 1,
-                hPortrait: 1,
+                hPortrait: 3,
+                animation: null // Will be implemented later
+            },
+            'DragonCrash': {
+                name: "Dragon Crash",
+                undub_name: "Dragon Crash",
+                loc_name: "Impacto Dragão", 
+                tp_cost: 35,
+                attribute: "Wood",
+                type: "Shoot",
+                power: 70,
+                starRank: 1,
+                hPortrait: 5,
                 animation: null // Will be implemented later
             },
             'TamanoriPierrot': {
@@ -70,7 +82,7 @@ class HissatsuDatabase {
                 type: "Dribble",
                 power: 40,
                 starRank: 1,
-                hPortrait: 1,
+                hPortrait: 6,
                 animation: null // Will be implemented later
             }
         };
