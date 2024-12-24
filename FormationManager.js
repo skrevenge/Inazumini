@@ -7,6 +7,14 @@ class FormationManager {
         this.physics = scene.physics;
         this.formationLogic = scene.formationLogic;
         
+        // Additional required properties
+        this.playerStats = scene.playerStats;
+        this.currentLanguage = scene.currentLanguage;
+        this.selectedNameStyle = scene.selectedNameStyle;
+        this.localization = scene.localization;
+        this.hissatsuTechniques = scene.hissatsuTechniques;
+        this.selectedPlayer = scene.selectedPlayer || 0;
+        
         // Formation-specific properties
         this.swapAreaRect = null;
         this.isSwapMode = false;
@@ -14,6 +22,30 @@ class FormationManager {
         this.swapIndicators = [];
         this.hissatsuSlots = [];
         this.isHissatsuPanelActive = false;
+    }
+
+    verifyProperties() {
+        const required = [
+            'scene',
+            'input',
+            'add',
+            'physics',
+            'formationLogic',
+            'playerStats',
+            'currentLanguage',
+            'selectedNameStyle',
+            'localization',
+            'hissatsuTechniques'
+        ];
+
+        const missing = required.filter(prop => !this[prop]);
+        
+        if (missing.length > 0) {
+            console.error('Missing required properties:', missing);
+            return false;
+        }
+        
+        return true;
     }
 
     setupFormationScreen() {
