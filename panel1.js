@@ -163,34 +163,6 @@ class Panel1 {
         });
     }
 
-    disableInteractions() {
-        this.elements.forEach(element => {
-            if (element && element.disableInteractive) {
-                element.disableInteractive();
-                if (element.removeInteractive) {
-                    element.removeInteractive();
-                }
-            }
-        });
-    }
-
-    enableInteractions() {
-        const interactiveElements = [
-            this.moveButton,
-            this.moveButtonText,
-            this.changeButton,
-            this.changeButtonText,
-            this.enhanceButton,
-            this.enhanceButtonText
-        ];
-
-        interactiveElements.forEach(element => {
-            if (element && element.setInteractive) {
-                element.setInteractive({ useHandCursor: true });
-            }
-        });
-    }
-
     destroy() {
         this.elements.forEach(element => {
             if (element) element.destroy();
