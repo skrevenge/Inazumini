@@ -1,12 +1,13 @@
 class FormationManager {
     constructor(scene) {
+        // Store scene references
         this.scene = scene;
-        this.input = scene.input; // Store reference to the scene's input system
-        this.init();
-    }
-
-    init() {
-        // Initialize properties
+        this.input = scene.input;
+        this.add = scene.add;
+        this.physics = scene.physics;
+        this.formationLogic = scene.formationLogic;
+        
+        // Formation-specific properties
         this.swapAreaRect = null;
         this.isSwapMode = false;
         this.selectionIndicator = null;
@@ -16,6 +17,16 @@ class FormationManager {
     }
 
     setupFormationScreen() {
+        if (!this.scene || !this.add || !this.input || !this.physics) {
+            console.error('Required scene properties are missing', {
+                hasScene: !!this.scene,
+                hasAdd: !!this.add,
+                hasInput: !!this.input,
+                hasPhysics: !!this.physics
+            });
+            return;
+        }
+
         this.setupSwapArea();
         this.setupBackgroundClickHandler();
         this.setupSelectionIndicator();
@@ -23,6 +34,19 @@ class FormationManager {
         this.setupPlayerPortrait();
         this.setupHissatsuSystem();
         this.updatePlayerPortrait();
+    }
+
+    setupSelectionIndicator() {
+        if (!this.add) {
+            console.error('Add system not available in FormationManager');
+            return;
+        }
+        
+        // Your selection indicator setup code here
+        this.selectionIndicator = this.add.rectangle(0, 0, 70, 70, 0xffff00, 0.5);
+        this.selectionIndicator.setStrokeStyle(2, 0xffff00);
+        this.selectionIndicator.setDepth(1);
+        this.selectionIndicator.visible = false;
     }
 
     setupBackgroundClickHandler() {
