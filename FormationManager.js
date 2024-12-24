@@ -1,14 +1,23 @@
 class FormationManager {
     constructor(scene) {
-        // Store scene references
+        // Store scene references with validation
+        if (!scene) {
+            console.error('Scene is required for FormationManager');
+            return;
+        }
+
+        // Core Phaser systems
         this.scene = scene;
         this.input = scene.input;
         this.add = scene.add;
         this.physics = scene.physics;
-        this.formationLogic = scene.formationLogic;
+        this.tweens = scene.tweens;
         
-        // Additional required properties
+        // Game logic systems
+        this.formationLogic = scene.formationLogic;
         this.playerStats = scene.playerStats;
+        
+        // Game state and configuration
         this.currentLanguage = scene.currentLanguage;
         this.selectedNameStyle = scene.selectedNameStyle;
         this.localization = scene.localization;
@@ -22,14 +31,18 @@ class FormationManager {
         this.swapIndicators = [];
         this.hissatsuSlots = [];
         this.isHissatsuPanelActive = false;
+
+        // Validate initialization
+        this.validateInitialization();
     }
 
-    verifyProperties() {
-        const required = [
+    validateInitialization() {
+        const requiredProperties = [
             'scene',
             'input',
             'add',
             'physics',
+            'tweens',
             'formationLogic',
             'playerStats',
             'currentLanguage',
@@ -38,10 +51,10 @@ class FormationManager {
             'hissatsuTechniques'
         ];
 
-        const missing = required.filter(prop => !this[prop]);
+        const missingProperties = requiredProperties.filter(prop => !this[prop]);
         
-        if (missing.length > 0) {
-            console.error('Missing required properties:', missing);
+        if (missingProperties.length > 0) {
+            console.error('Missing required properties:', missingProperties);
             return false;
         }
         
