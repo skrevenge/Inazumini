@@ -89,7 +89,7 @@ class PanelManager {
         backText.setAlpha(0.75);
 
         const isPanel2Active = frontPanel === this.formationFicha2;
-        this.updateHissatsuElementsVisibility(isPanel2Active);
+        this.handlePanelElementsVisibility(isPanel2Active);
     }
 
     handlePanelElementsVisibility(isHissatsuPanel) {
