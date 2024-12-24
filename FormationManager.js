@@ -1,6 +1,7 @@
 class FormationManager {
     constructor(scene) {
         this.scene = scene;
+        this.input = scene.input; // Store reference to the scene's input system
         this.init();
     }
 
@@ -22,6 +23,20 @@ class FormationManager {
         this.setupPlayerPortrait();
         this.setupHissatsuSystem();
         this.updatePlayerPortrait();
+    }
+
+    setupBackgroundClickHandler() {
+        // Use the stored input reference
+        if (this.input) {
+            this.input.on('pointerdown', (pointer) => {
+                // Your click handling logic here
+                if (!this.isHissatsuPanelActive) {
+                    // Existing click handling code
+                }
+            });
+        } else {
+            console.error('Input system not available in FormationManager');
+        }
     }
 
     setupSwapArea() {
