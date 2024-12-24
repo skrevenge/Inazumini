@@ -1,3 +1,29 @@
+class FormationManager {
+    constructor(scene) {
+        this.scene = scene;
+        this.init();
+    }
+
+    init() {
+        // Initialize properties
+        this.swapAreaRect = null;
+        this.isSwapMode = false;
+        this.selectionIndicator = null;
+        this.swapIndicators = [];
+        this.hissatsuSlots = [];
+        this.isHissatsuPanelActive = false;
+    }
+
+    setupFormationScreen() {
+        this.setupSwapArea();
+        this.setupBackgroundClickHandler();
+        this.setupSelectionIndicator();
+        this.setupFormationPanels();
+        this.setupPlayerPortrait();
+        this.setupHissatsuSystem();
+        this.updatePlayerPortrait();
+    }
+
     setupSwapArea() {
         this.swapAreaRect = this.scene.add.rectangle(30, 100, 300, 375, 0xFF0000);
         this.swapAreaRect.setAlpha(0);
@@ -1364,3 +1390,66 @@
         }
         return 'Unknown';
     }
+
+    cleanup() {
+        // Exit swap mode if active
+        if (this.isSwapMode) {
+            this.exitSwapMode();
+        }
+        // Destroy the swap area rectangle
+        if (this.swapAreaRect) {
+            this.swapAreaRect.destroy();
+            this.swapAreaRect = null;
+        }
+
+        // Clean up Hissatsu slots
+        if (this.hissatsuSlots) {
+            this.hissatsuSlots.forEach(({
+                sprite,
+                text,
+                border
+            }) => {
+                if (sprite) sprite.destroy();
+                if (text) text.destroy();
+                if (border) border.destroy();
+            });
+            this.hissatsuSlots = [];
+        }
+
+        // Clear the update function
+        this.updateHissatsuSlots = null;
+
+        // Remove pointer event listeners
+        this.input.removeAllListeners('pointerdown');
+
+        // Destroy selection indicator
+        if (this.selectionIndicator) {
+            this.selectionIndicator.destroy();
+            this.selectionIndicator = null;
+        }
+
+        // Destroy swap indicators
+        if (this.swapIndicators) {
+            this.swapIndicators.forEach(indicator => {
+                if (indicator) {
+                    if (indicator.timeline) {
+                        indicator.timeline.stop();
+                    }
+                    indicator.destroy();
+                }
+            });
+            this.swapIndicators = [];
+        }
+
+        // Reset swap mode flag
+        this.isSwapMode = false;
+
+        // Close formation menu if open
+        if (this.formationLogic && this.formationLogic.formationMenuOpen) {
+            this.formationLogic.closeFormationMenu();
+        }
+    }
+}
+
+// Make it available globally
+window.FormationManager = FormationManager;
