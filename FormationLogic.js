@@ -25,7 +25,7 @@ class FormationLogic {
 
         // Add formation button
         const formationButton = this.scene.add.image(fieldX, 505, 'button');
-        formationButton.setOrigin(0.5).setInteractive().setDepth(5);
+        formationButton.setOrigin(0.5).setInteractive();
         const formationText = this.scene.add.bitmapText(fieldX, 505, 'customFont', this.currentFormation, 30)
             .setOrigin(0.5)
             .setTint(0xFFFFFF);
