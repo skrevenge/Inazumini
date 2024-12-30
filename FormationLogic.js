@@ -239,7 +239,7 @@ class FormationLogic {
 
         formations.forEach((formation, index) => {
             if (formation !== this.currentFormation) {
-                const button = this.scene.add.image(x, baseY - ((index + 1) * spacing), 'button');
+                const button = this.scene.add.image(x, baseY - ((index + 1) * spacing), 'button')
                 .setDepth(4);
                 const text = this.scene.add.bitmapText(x, baseY - ((index + 1) * spacing), 'customFont', formation, 30)
                     .setOrigin(0.5)
