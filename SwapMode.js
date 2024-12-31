@@ -334,6 +334,12 @@ class SwapMode {
         // Reposition all players with updated positions
         this.scene.formationLogic.positionPlayersInFormation(180, 100);
 
+        // Hide reserves elements after swap
+        const reservesIcon = this.scene.children.getByName('reservesIcon');
+        const benchText = this.scene.children.getByName('benchText');
+        if (reservesIcon) reservesIcon.setVisible(false);
+        if (benchText) benchText.setVisible(false);
+
         // Save the changes
         this.scene.saveGameData();
     }
