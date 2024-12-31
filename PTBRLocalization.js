@@ -20,7 +20,7 @@ class PTBRLocalization {
             'Formation_SwapPlayer': 'Trocar\nJogador',
             'Formation_Cancel': 'Cancelar',
             'Formation_Enhance': 'Aprimorar',
-            'Stats_Level': 'Nível',
+            'Stats_Level': 'Nv',
             'Stats_Exp': 'Exp',
             'Stats_TP': 'TP',
             'Stats_FP': 'FP',
@@ -29,7 +29,7 @@ class PTBRLocalization {
             'Stats_Dribble': 'Drible',
             'Stats_Catch': 'Captura',
             'Stats_Speed': 'Velocidade',
-            'Stats_Attribute': 'Elemento',
+            'Stats_Element': 'Elemento',
             'Stats_Rarity': 'Raridade',
             'Stats_Stats': 'Estatísticas',
             'Stats_Hissatsu': 'Teq. Especiais'
