@@ -188,6 +188,7 @@ class SwapMode {
                     }
                     this.scene.selectedPlayerIndex = i;
                     this.updateYellowIndicator();
+                    this.scene.updatePlayerInfo();
                     console.log(`Selected player: ${i}, Position: ${this.scene.getPlayerPosition(i)}`);
                     break;
                 }
