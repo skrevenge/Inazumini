@@ -12,9 +12,27 @@ class PTBRLocalization {
             'Instruction_NextPage': 'Prox. Pagina',
             'Instruction_MainMenu': 'Menu Princ.',
             'Instruction_PageIndicator': 'Página {current}/{total}',
-            'LobbyButton_Inventory': 'Inventário',
+            'LobbyButton_Inventory': 'Jogadores',
             'LobbyButton_Play': 'Jogar',
-            'LobbyButton_Formation': 'Formação'
+            'LobbyButton_Formation': 'Formação',
+            'Formation_Bench': 'Reservas',
+            'saved': 'Salvo',
+            'Formation_SwapPlayer': 'Trocar\nJogador',
+            'Formation_Cancel': 'Cancelar',
+            'Formation_Enhance': 'Aprimorar',
+            'Stats_Level': 'Nível',
+            'Stats_Exp': 'Exp',
+            'Stats_TP': 'TP',
+            'Stats_FP': 'FP',
+            'Stats_Shoot': 'Chute',
+            'Stats_Strength': 'Força',
+            'Stats_Dribble': 'Drible',
+            'Stats_Catch': 'Captura',
+            'Stats_Speed': 'Velocidade',
+            'Stats_Attribute': 'Elemento',
+            'Stats_Rarity': 'Raridade',
+            'Stats_Stats': 'Estatísticas',
+            'Stats_Hissatsu': 'Teq. Especiais'
         };
     }
 
