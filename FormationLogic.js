@@ -289,8 +289,6 @@ class FormationLogic {
         
         // Reposition players and update visuals
         this.positionPlayersInFormation(180, 100);
-        this.scene.updateSelectionIndicator();
-        this.scene.updatePlayerPortrait();
         this.scene.saveGameData();
     }
 
