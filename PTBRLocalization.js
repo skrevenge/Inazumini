@@ -40,7 +40,10 @@ class PTBRLocalization {
             'HissatsuType_Shoot': 'Chute',
             'HissatsuType_Block': 'Defesa',
             'HissatsuType_Catch': 'Captura',
-            'HissatsuType_Dribble': 'Drible'
+            'HissatsuType_Dribble': 'Drible',
+            'Stats_Type': 'Tipo',
+            'Stats_Power': 'Poder',
+            'Stats_Rank': 'Classe',
         };
     }
 
