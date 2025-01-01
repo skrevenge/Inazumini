@@ -5,11 +5,11 @@ class HissatsuDatabase {
                 name: "God Hand",
                 undub_name: "Gotto Hando", 
                 loc_name: "Mão Fantasma",
-                tp_cost: 20,
+                tp_cost: 30,
                 attribute: "Earth",
                 type: "Catch",
                 power: 50,
-                starRank: 3,
+                starRank: 1,
                 hPortrait: 0,
                 animation: null // Will be implemented later
             },
