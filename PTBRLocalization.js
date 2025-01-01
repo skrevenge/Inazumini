@@ -32,7 +32,15 @@ class PTBRLocalization {
             'Stats_Element': 'Elemento',
             'Stats_Rarity': 'Raridade',
             'Stats_Stats': 'Estatísticas',
-            'Stats_Hissatsu': 'Teq. Especiais'
+            'Stats_Hissatsu': 'Teq. Especiais',
+            'Attribute_Fire': 'Fogo',
+            'Attribute_Earth': 'Terra',
+            'Attribute_Wood': 'Floresta',
+            'Attribute_Wind': 'Vento',
+            'HissatsuType_Shoot': 'Chute',
+            'HissatsuType_Block': 'Defesa',
+            'HissatsuType_Catch': 'Captura',
+            'HissatsuType_Dribble': 'Drible'
         };
     }
 
