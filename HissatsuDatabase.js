@@ -43,7 +43,7 @@ class HissatsuDatabase {
                 loc_name: "O Muro", 
                 tp_cost: 30,
                 attribute: "Earth",
-                type: "Defense",
+                type: "Block",
                 power: 50,
                 starRank: 1,
                 hPortrait: 4,
