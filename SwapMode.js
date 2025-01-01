@@ -344,4 +344,33 @@ class SwapMode {
         // Save the changes
         this.scene.saveGameData();
     }
+    // No SwapMode.js, adicione:
+handlePlayerSwap(index1, index2) {
+    // Move a lógica de troca de jogadores para cá
+    const temp = this.scene.playerStats.activePlayers[index1];
+    this.scene.playerStats.activePlayers[index1] = this.scene.playerStats.activePlayers[index2];
+    this.scene.playerStats.activePlayers[index2] = temp;
+
+    // Clear existing player sprites
+    this.scene.formationLogic.formationElements.players = this.scene.formationLogic.formationElements.players.filter(player => {
+        if (player instanceof Phaser.GameObjects.Image &&
+            (player.texture.key === 'raimonBody' || player.texture.key === 'raimonHead')) {
+            player.destroy();
+            return false;
+        }
+        return true;
+    });
+
+    // Reposition all players with updated positions
+    this.scene.formationLogic.positionPlayersInFormation(180, 100);
+}
+
+cleanup() {
+    if (this.yellowIndicator) {
+        this.scene.tweens.killTweensOf(this.yellowIndicator);
+        this.yellowIndicator.destroy();
+        this.yellowIndicator = null;
+    }
+    this.clearBlueIndicators();
+}
 }
