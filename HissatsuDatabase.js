@@ -9,7 +9,7 @@ class HissatsuDatabase {
                 attribute: "Earth",
                 type: "Catch",
                 power: 50,
-                starRank: 1,
+                starRank: 3,
                 hPortrait: 0,
                 animation: null // Will be implemented later
             },
