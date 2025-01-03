@@ -9,7 +9,7 @@ class HissatsuDatabase {
                 attribute: "Earth",
                 type: "Catch",
                 power: 50,
-                starRank: 3,
+                starRank: 1,
                 hPortrait: 0,
                 animation: null // Will be implemented later
             },
@@ -83,6 +83,18 @@ class HissatsuDatabase {
                 power: 40,
                 starRank: 1,
                 hPortrait: 6,
+                animation: null // Will be implemented later
+            },
+            'Inazuma1Go': {
+                name: "Inazuma Nº1",
+                undub_name: "Inazuma 1Gou",
+                loc_name: "Relâmpago Nº1", 
+                tp_cost: 40,
+                attribute: "Wind",
+                type: "Shoot",
+                power: 90,
+                starRank: 1,
+                hPortrait: 2,
                 animation: null // Will be implemented later
             }
         };
