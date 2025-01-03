@@ -10,6 +10,28 @@ class PlayerStats {
     addPlayer(key, level, rarity = 'Normal', exp = 0) {
         if (this.characterStats[key]) {
             const character = this.characterStats[key];
+            
+            // Initialize hissatsu array based on rarity
+            let hissatsuList = [...character.hissatsu]; // Start with base hissatsu
+            
+            // Add additional hissatsu based on rarity
+            switch(rarity) {
+                case 'Legend':
+                    hissatsuList = [...character.RankLHst];
+                    break;
+                case 'Ultra Rare':
+                    hissatsuList = [...character.RankURHst];
+                    break;
+                case 'Super Rare':
+                    hissatsuList = [...character.RankSRHst];
+                    break;
+                case 'Rare':
+                    hissatsuList = [...character.RankRHst];
+                    break;
+                default:
+                    hissatsuList = [...character.hissatsu];
+            }
+
             this.players[key] = {
                 ...character,
                 level: 1,
@@ -21,9 +43,9 @@ class PlayerStats {
                 dribble: character.dribble || 0,
                 speed: character.speed || 0,
                 strength: character.strength || 0,
-                keeper: character.keeper || 0
+                keeper: character.keeper || 0,
+                hissatsu: hissatsuList
             };
-
             // Apply level boosts
             for (let i = 2; i <= level; i++) {
                 this.applyBoosts(key);
