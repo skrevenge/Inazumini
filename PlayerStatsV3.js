@@ -242,7 +242,6 @@ applyRarityBuffs(playerKey, targetRarity) {
                 speed: 70,
                 strength: 75,
                 keeper: 90,
-                hissatsu: ['GodHand'],
                 headSpriteConfig: {
                     key: 'raimonHead',
                     frames: [0, 1, 2, 3, 4, 5, 6, 7]
@@ -261,6 +260,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [20, 16, 7, 8, 8, 8, 12],
                     RankLegend: [25, 20, 9, 10, 10, 10, 15]
                 },
+                hissatsu: ['GodHand'],
                 RankRHst: ['GodHand', 'NekketsuPunch'],
                 RankSRHst: ['GodHand', 'NekketsuPunch', 'Inazuma1Go'],
                 RankURHst: ['GodHand', 'NekketsuPunch', 'Inazuma1Go', 'InazumaBreak'],
@@ -277,7 +277,6 @@ applyRarityBuffs(playerKey, targetRarity) {
                 speed: 90,
                 strength: 65,
                 keeper: 40,
-                hissatsu: ['ShippuuDash'],
                 headSpriteConfig: {
                     key: 'raimonHead',
                     frames: [8, 9, 10, 11, 12, 13, 14, 15]
@@ -296,6 +295,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [16, 20, 8, 10, 12, 8, 6],
                     RankLegend: [20, 25, 10, 12, 15, 10, 8]
                 },
+                hissatsu: ['ShippuuDash'],
                 RankRHst: ['ShippuuDash', 'BunshinDefense'],
                 RankSRHst: ['ShippuuDash', 'BunshinDefense', 'QuickDraw'],
                 RankURHst: ['Shippuu Dash', 'BunshinDefense', 'QuickDraw', 'HonooKazamidori'],
@@ -312,7 +312,6 @@ applyRarityBuffs(playerKey, targetRarity) {
                 speed: 70,
                 strength: 75,
                 keeper: 90,
-                hissatsu: ['FireTornado'],
                 headSpriteConfig: {
                     key: 'raimonHead',
                     frames: [16, 17, 18, 19, 20, 21, 22, 23]
@@ -331,6 +330,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [20, 16, 7, 8, 8, 8, 12],
                     RankLegend: [25, 20, 9, 10, 10, 10, 15]
                 },
+                hissatsu: ['FireTornado'],
                 RankRHst: ['FireTornado', 'Inazuma1Go'],
                 RankSRHst: ['FireTornado', 'Inazuma1Go', 'HeatTackle'],
                 RankURHst: ['FireTornado', 'Inazuma1Go', 'HeatTackle', 'InazumaOtoshi'],
@@ -347,7 +347,6 @@ applyRarityBuffs(playerKey, targetRarity) {
                 speed: 70,
                 strength: 75,
                 keeper: 90,
-                hissatsu: ['TheWall'],
                 headSpriteConfig: {
                     key: 'raimonHead',
                     frames: [24, 25, 26, 27, 28, 29, 30, 31]
@@ -366,6 +365,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [20, 16, 7, 8, 8, 8, 12],
                     RankLegend: [25, 20, 9, 10, 10, 10, 15]
                 },
+                hissatsu: ['TheWall'],
                 RankRHst: ['TheWall', 'MoguraFeint'],
                 RankSRHst: ['TheWall', 'MoguraFeint', 'MegaQuake'],
                 RankURHst: ['TheWall', 'MoguraFeint', 'MegaQuake', 'InazumaOtoshi'],
@@ -382,7 +382,6 @@ applyRarityBuffs(playerKey, targetRarity) {
                 speed: 90,
                 strength: 65,
                 keeper: 40,
-                hissatsu: ['TamanoriPierrot'],
                 headSpriteConfig: {
                     key: 'raimonHead',
                     frames: [32, 33, 34, 35, 36, 37, 38, 39]
@@ -401,6 +400,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [16, 20, 8, 10, 12, 8, 6],
                     RankLegend: [20, 25, 10, 12, 15, 10, 8]
                 },
+                hissatsu: ['TamanoriPierrot'],
                 RankRHst: ['TamanoriPierrot', 'MonkeyTurn'],
                 RankSRHst: ['TamanoriPierrot', 'MonkeyTurn', 'SuiseiShot'],
                 RankURHst: ['TamanoriPierrot', 'MonkeyTurn', 'SuiseiShot', 'RunBallRun'],
@@ -417,7 +417,6 @@ applyRarityBuffs(playerKey, targetRarity) {
                 speed: 90,
                 strength: 65,
                 keeper: 40,
-                hissatsu: ['DragonCrash'],
                 headSpriteConfig: {
                     key: 'raimonHead',
                     frames: [40, 41, 42, 43, 44, 45, 46, 47]
@@ -436,6 +435,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                     RankURare: [16, 20, 8, 10, 12, 8, 6],
                     RankLegend: [20, 25, 10, 12, 15, 10, 8]
                 },
+                hissatsu: ['DragonCrash'],
                 RankRHst: ['DragonCrash', 'ZigZagSpark'],
                 RankSRHst: ['DragonCrash', 'ZigZagSpark', 'DragonTornado'],
                 RankURHst: ['DragonCrash', 'ZigZagSpark', 'DragonTornado', 'MeganeCrash'],
