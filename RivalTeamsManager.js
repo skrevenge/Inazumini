@@ -2,7 +2,7 @@ class RivalTeamsManager {
     constructor(scene) {
         this.scene = scene;
         this.rivalTeams = {
-            'raimon_og': {
+            'Raimon': {
                 undubName: 'Raimon',
                 locName: 'Raimon',
                 formation: '2-1-2',
@@ -32,7 +32,7 @@ class RivalTeamsManager {
                     rarity: 'Normal'
                 }]
             },
-            'occult': {
+            'Occult': {
                 undubName: 'Okaruto',
                 locName: 'Col. Sobrenatural',
                 formation: '3-1-1',
@@ -62,9 +62,9 @@ class RivalTeamsManager {
                     rarity: 'Rare'
                 }]
             },
-            'raimon_2nd': {
+            'Raimon 2nd': {
                 undubName: 'Shin Raimon',
-                locName: 'Novo Raimon',
+                locName: 'Nova Raimon',
                 formation: '1-2-2',
                 players: [{
                     key: 'markEvans',
