@@ -463,6 +463,41 @@ applyRarityBuffs(playerKey, targetRarity) {
                 RankURHst: ['DragonCrash', 'ZigZagSpark', 'DragonTornado', 'MeganeCrash'],
                 RankLHst: ['DragonCrash', 'ZigZagSpark', 'DragonTornado', 'MeganeCrash', 'DragonCannon']
             }),
+           'JosephKing': new PlayerStats.Character({
+                name: 'Joseph King',
+                undubName: 'Koujirou Genda',
+                TP: 160,
+                FP: 180,
+                attribute: 'Fire',
+                shoot: 60,
+                dribble: 80,
+                speed: 90,
+                strength: 65,
+                keeper: 40,
+                headSpriteConfig: {
+                    key: 'raimonHead',
+                    frames: [8, 9, 10, 11, 12, 13, 14, 15]
+                },
+                portraitFrame: 7,
+                LvUpBoost: {
+                    1: [4, 5, 2, 3, 3, 2, 1],
+                    2: [5, 6, 2, 3, 3, 2, 1],
+                    3: [5, 6, 3, 4, 4, 3, 1],
+                    4: [6, 7, 3, 4, 4, 3, 1],
+                    5: [6, 7, 3, 4, 5, 3, 2]
+                },
+                RankUpBoost: {
+                    RankRare: [8, 10, 4, 5, 6, 4, 3],
+                    RankSRare: [12, 15, 6, 8, 9, 6, 4],
+                    RankURare: [16, 20, 8, 10, 12, 8, 6],
+                    RankLegend: [20, 25, 10, 12, 15, 10, 8]
+                },
+                hissatsu: ['PowerShield'],
+                RankRHst: ['PowerShield', 'FPShield'],
+                RankSRHst: ['PowerShield', 'FPShield', 'RocketPunch'],
+                RankURHst: ['PowerShield', 'FPShield', 'RocketPunch', 'BeastFang'],
+                RankLHst: ['PowerShield', 'FPShield', 'RocketPunch', 'BeastFang', 'HighBeastFang']
+            }),
             // Add more players here as needed
         };
     }
