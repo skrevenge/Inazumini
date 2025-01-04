@@ -149,7 +149,8 @@ class RivalTeamsManager {
                     portraitFrame: stats.portraitFrame,
                     level: player.level,
                     rarity: player.rarity,
-                    position: this.getPlayerPositionFromFormation(playerIndex, team.formation)
+                    position: this.getPlayerPositionFromFormation(playerIndex, team.formation),
+                    headSpriteConfig: stats.headSpriteConfig // Include the head sprite configuration
                 };
             }).filter(player => player !== null);
 
