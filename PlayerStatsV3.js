@@ -494,7 +494,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 },
                 hissatsu: ['PowerShield'],
                 RankRHst: ['PowerShield', 'FPShield'],
-                RankSRHst: ['PowerShield', 'FPShield', 'RocketPunch'],
+                RankSRHst: ['PowerShield', 'FPShield', 'JudgeThrough'],
                 RankURHst: ['PowerShield', 'FPShield', 'JudgeThrough', 'IllusionBall'],
                 RankLHst: ['PowerShield', 'FPShield', 'JudgeThrough', 'IllusionBall', 'BeastFang']
             }),
