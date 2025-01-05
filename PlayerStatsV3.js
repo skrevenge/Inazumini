@@ -495,8 +495,8 @@ applyRarityBuffs(playerKey, targetRarity) {
                 hissatsu: ['PowerShield'],
                 RankRHst: ['PowerShield', 'FPShield'],
                 RankSRHst: ['PowerShield', 'FPShield', 'RocketPunch'],
-                RankURHst: ['PowerShield', 'FPShield', 'RocketPunch', 'BeastFang'],
-                RankLHst: ['PowerShield', 'FPShield', 'RocketPunch', 'BeastFang', 'HighBeastFang']
+                RankURHst: ['PowerShield', 'FPShield', 'JudgeThrough', 'IllusionBall'],
+                RankLHst: ['PowerShield', 'FPShield', 'JudgeThrough', 'IllusionBall', 'BeastFang']
             }),
             // Add more players here as needed
         };
