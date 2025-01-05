@@ -538,7 +538,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 undubName: 'Jirou Sakuma',
                 TP: 160,
                 FP: 180,
-                attribute: 'Wind',
+                attribute: 'Wood',
                 shoot: 60,
                 dribble: 80,
                 speed: 90,
