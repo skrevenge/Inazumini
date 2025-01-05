@@ -531,7 +531,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 RankRHst: ['IllusionBall', 'DeathZone'],
                 RankSRHst: ['IllusionBall', 'DeathZone', 'KoteiPenguin2go'],
                 RankURHst: ['IllusionBall', 'DeathZone', 'KoteiPenguin2go', 'TwinBoost'],
-                RankLHst: ['IllusionBall', DeathZone', 'KoteiPenguin2go', 'TwinBoost', 'InazumaBreak']
+                RankLHst: ['IllusionBall', 'DeathZone', 'KoteiPenguin2go', 'TwinBoost', 'InazumaBreak']
             }),
             // Add more players here as needed
         };
