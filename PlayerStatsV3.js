@@ -475,7 +475,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 strength: 65,
                 keeper: 40,
                 headSpriteConfig: {
-                    key: 'raimonHead',
+                    key: 'teikokuHead',
                     frames: [0, 1, 2, 3, 4, 5, 6, 7]
                 },
                 portraitFrame: 7,
@@ -510,7 +510,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 strength: 65,
                 keeper: 40,
                 headSpriteConfig: {
-                    key: 'raimonHead',
+                    key: 'teikokuHead',
                     frames: [8, 9, 10, 11, 12, 13, 14, 15]
                 },
                 portraitFrame: 8,
@@ -532,6 +532,41 @@ applyRarityBuffs(playerKey, targetRarity) {
                 RankSRHst: ['IllusionBall', 'DeathZone', 'KoteiPenguin2go'],
                 RankURHst: ['IllusionBall', 'DeathZone', 'KoteiPenguin2go', 'TwinBoost'],
                 RankLHst: ['IllusionBall', 'DeathZone', 'KoteiPenguin2go', 'TwinBoost', 'InazumaBreak']
+            }),
+          'davidSamford': new PlayerStats.Character({
+                name: 'David Samford',
+                undubName: 'Jirou Sakuma',
+                TP: 160,
+                FP: 180,
+                attribute: 'Wind',
+                shoot: 60,
+                dribble: 80,
+                speed: 90,
+                strength: 65,
+                keeper: 40,
+                headSpriteConfig: {
+                    key: 'teikokuHead',
+                    frames: [16, 17, 18, 19, 20, 21, 22, 23]
+                },
+                portraitFrame: 9,
+                LvUpBoost: {
+                    1: [4, 5, 2, 3, 3, 2, 1],
+                    2: [5, 6, 2, 3, 3, 2, 1],
+                    3: [5, 6, 3, 4, 4, 3, 1],
+                    4: [6, 7, 3, 4, 4, 3, 1],
+                    5: [6, 7, 3, 4, 5, 3, 2]
+                },
+                RankUpBoost: {
+                    RankRare: [8, 10, 4, 5, 6, 4, 3],
+                    RankSRare: [12, 15, 6, 8, 9, 6, 4],
+                    RankURare: [16, 20, 8, 10, 12, 8, 6],
+                    RankLegend: [20, 25, 10, 12, 15, 10, 8]
+                },
+                hissatsu: ['JudgeThrough'],
+                RankRHst: ['JudgeThrough', 'KoteiPenguin2go'],
+                RankSRHst: ['JudgeThrough', 'KoteiPenguin2go', 'KillerSlide'],
+                RankURHst: ['JudgeThrough', 'KoteiPenguin2go', 'KillerSlide', 'DeathZone'],
+                RankLHst: ['JudgeThrough', 'KoteiPenguin2go', 'KillerSlide', 'DeathZone', 'KoteiPenguin1go']
             }),
             // Add more players here as needed
         };
