@@ -32,12 +32,12 @@ class RivalTeamsManager {
                     rarity: 'Normal'
                 }]
             },
-            'Occult': {
-                undubName: 'Okaruto',
-                locName: 'Col. Sobrenatural',
+            'Royal Academy': {
+                undubName: 'Teikoku Gakuen',
+                locName: 'Instituto Imperial',
                 formation: '3-1-1',
                 players: [{
-                    key: 'markEvans',
+                    key: 'josephKing',
                     level: 5,
                     rarity: 'Rare'
                 }, {
@@ -49,11 +49,11 @@ class RivalTeamsManager {
                     level: 4,
                     rarity: 'Rare'
                 }, {
-                    key: 'nathanSwift',
+                    key: 'judeSharp',
                     level: 4,
                     rarity: 'Rare'
                 }, {
-                    key: 'axelBlaze',
+                    key: 'davidSamford',
                     level: 6,
                     rarity: 'Rare'
                 }, {
