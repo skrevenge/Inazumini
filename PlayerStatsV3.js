@@ -493,7 +493,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                     key: 'teikokuHead',
                     frames: [0, 1, 2, 3, 4, 5, 6, 7]
                 },
-                portraitFrame: 7,
+                portraitFrame: 6,
                 LvUpBoost: {
                     1: [4, 5, 2, 3, 3, 2, 1],
                     2: [5, 6, 2, 3, 3, 2, 1],
@@ -563,7 +563,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                     key: 'teikokuHead',
                     frames: [16, 17, 18, 19, 20, 21, 22, 23]
                 },
-                portraitFrame: 9,
+                portraitFrame: 7,
                 LvUpBoost: {
                     1: [4, 5, 2, 3, 3, 2, 1],
                     2: [5, 6, 2, 3, 3, 2, 1],
