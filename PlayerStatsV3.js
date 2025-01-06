@@ -174,6 +174,7 @@ applyRarityBuffs(playerKey, targetRarity) {
 
         // Clear current active players
         this.activePlayers = [];
+    }
         
     applyBoosts(playerName) {
         const player = this.players[playerName];
