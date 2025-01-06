@@ -152,6 +152,14 @@ applyRarityBuffs(playerKey, targetRarity) {
     };
 
     initializeDefaultPlayers() {
+        // Initialize all available players
+        const allPlayerStats = this.initializePlayerStats();
+        Object.keys(allPlayerStats).forEach(playerKey => {
+            // Add player with basic stats
+            this.addPlayer(playerKey, 1, 'Normal', 0);
+        });
+
+        // Set up default team with specific levels and rarities
         const defaultPlayers = [
             { key: 'markEvans', level: 4, rarity: 'Rare', exp: 250 },
             { key: 'todIronside', level: 2, rarity: 'Normal', exp: 50 },
@@ -161,21 +169,27 @@ applyRarityBuffs(playerKey, targetRarity) {
             { key: 'kevinDragonfly', level: 3, rarity: 'Normal', exp: 75 }
         ];
 
+        // Update default players with specific stats
         defaultPlayers.forEach(player => {
-            const stats = this.initializePlayerStats()[player.key];
-            if (stats) {
-                // Initialize the player with specified level, rarity, and exp
-                this.addPlayer(player.key, player.level, player.rarity, player.exp);
-            } else {
-                console.error(`Jogador com a chave '${player.key}' não encontrado!`);
+            if (this.players[player.key]) {
+                this.players[player.key].level = player.level;
+                this.players[player.key].rarity = player.rarity;
+                this.players[player.key].exp = player.exp;
+                
+                // Apply level boosts and rarity buffs
+                for (let i = 2; i <= player.level; i++) {
+                    this.applyBoosts(player.key);
+                }
+                if (player.rarity !== 'Normal') {
+                    this.applyRarityBuffs(player.key, player.rarity);
+                }
             }
         });
 
-        // Set initial active players
+        // Set initial active players (default team)
         this.activePlayers = defaultPlayers.map(player => player.key);
-    }
-
-
+        
+        console.log('All initialized players:', Object.keys(this.players));
 
     applyBoosts(playerName) {
         const player = this.players[playerName];
