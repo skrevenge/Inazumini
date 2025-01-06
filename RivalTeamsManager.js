@@ -95,6 +95,11 @@ class RivalTeamsManager {
         };
     }
 
+        // Add a method to access character stats directly
+    getCharacterStats(playerKey) {
+        return this.scene.playerStats.characterStats[playerKey];
+    }
+
     getPlayerPositionFromFormation(playerIndex, formation) {
         const formationMap = {
             '2-1-2': ['GK', 'DF', 'DF', 'MF', 'FW', 'FW'],
@@ -141,17 +146,25 @@ class RivalTeamsManager {
             }
 
             const processedPlayers = team.players.map((player, playerIndex) => {
-                const stats = this.scene.playerStats.getPlayerStats(player.key);
-                if (!stats) return null;
-                return {
+                const stats = this.getCharacterStats(player.key);
+                if (!stats) {
+                    console.warn(`No character stats found for ${player.key}`);
+                    return null;
+                }
+                // Create a copy of base stats and apply rival team modifications
+                const rivalStats = {
+                    ...stats,
                     key: player.key,
                     name: this.scene.selectedNameStyle === 'dub' ? stats.name : stats.undubName,
                     portraitFrame: stats.portraitFrame,
                     level: player.level,
                     rarity: player.rarity,
                     position: this.getPlayerPositionFromFormation(playerIndex, team.formation),
-                    headSpriteConfig: stats.headSpriteConfig // Include the head sprite configuration
+                    headSpriteConfig: stats.headSpriteConfig
                 };
+                
+                return rivalStats;
+
             }).filter(player => player !== null);
 
             if (processedPlayers.length > 0 && team.formation) {
