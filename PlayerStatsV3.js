@@ -48,29 +48,40 @@ class PlayerStats {
         }
     }
 
-        getHissatsuForRarity(player) {
-        let hissatsu = [...player.hissatsu]; // Start with base hissatsu
+     getHissatsuForRarity(playerKey) {
+        // Get character data from characterStats
+        const character = this.characterStats[playerKey];
+        if (!character) return [];
+
+        // Get player data if it exists (for existing players)
+        const player = this.players[playerKey];
+        const rarity = player ? player.rarity : 'Normal';
+
+        // Start with base hissatsu
+        let hissatsu = [...character.hissatsu];
 
         // Add hissatsu based on rarity level
-        switch (player.rarity) {
+        switch (rarity) {
             case 'Legend':
-                hissatsu = [...hissatsu, ...player.RankLHst];
+                if (character.RankLHst) hissatsu = [...character.RankLHst];
                 break;
             case 'Ultra Rare':
-                hissatsu = [...hissatsu, ...player.RankURHst];
+                if (character.RankURHst) hissatsu = [...character.RankURHst];
                 break;
             case 'Super Rare':
-                hissatsu = [...hissatsu, ...player.RankSRHst];
+                if (character.RankSRHst) hissatsu = [...character.RankSRHst];
                 break;
             case 'Rare':
-                hissatsu = [...hissatsu, ...player.RankRHst];
+                if (character.RankRHst) hissatsu = [...character.RankRHst];
+                break;
+            default:
+                // For Normal rarity, we already have the base hissatsu
                 break;
         }
 
-        // Remove duplicates
+        // Remove duplicates and return
         return [...new Set(hissatsu)];
-    }
-    
+    }    
     addExp(playerKey, amount) {
         const player = this.players[playerKey];
         if (!player) return;
