@@ -10,10 +10,10 @@ class PlayerStats {
     addPlayer(key, level, rarity = 'Normal', exp = 0) {
         if (this.characterStats[key]) {
             const character = this.characterStats[key];
-            
+
             // Initialize hissatsu array based on rarity
             let hissatsuList = [...character.hissatsu]; // Start with base hissatsu
-            
+
             // Add additional hissatsu based on rarity
             switch(rarity) {
                 case 'Legend':
@@ -82,7 +82,7 @@ class PlayerStats {
         player.level++;
         this.applyBoosts(playerKey);
     }
-    
+
 applyRarityBuffs(playerKey, targetRarity) {
     const player = this.players[playerKey];
     if (!player) return;
@@ -95,7 +95,7 @@ applyRarityBuffs(playerKey, targetRarity) {
         const currentRarity = rarityOrder[i];
         const boostKey = `Rank${currentRarity.replace(' ', '')}`;
         const boosts = player.RankUpBoost[boostKey];
-        
+
         if (boosts) {
             const [TP, FP, shoot, dribble, speed, strength, keeper] = boosts;
             player.TP += TP || 0;
@@ -110,7 +110,7 @@ applyRarityBuffs(playerKey, targetRarity) {
 
     player.rarity = targetRarity;
 }
-    
+
     updateActivePlayers(newActivePlayerKeys) {
     this.activePlayers = newActivePlayerKeys.slice(0, 6);  // Limit to 6 players
 }
@@ -175,7 +175,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 this.players[player.key].level = player.level;
                 this.players[player.key].rarity = player.rarity;
                 this.players[player.key].exp = player.exp;
-                
+
                 // Apply level boosts and rarity buffs
                 for (let i = 2; i <= player.level; i++) {
                     this.applyBoosts(player.key);
@@ -185,11 +185,12 @@ applyRarityBuffs(playerKey, targetRarity) {
                 }
             }
         });
-
+    
         // Set initial active players (default team)
         this.activePlayers = defaultPlayers.map(player => player.key);
-        
+
         console.log('All initialized players:', Object.keys(this.players));
+    }
 
     applyBoosts(playerName) {
         const player = this.players[playerName];
@@ -264,7 +265,7 @@ applyRarityBuffs(playerKey, targetRarity) {
                 return 0; // Default to Fire if attribute is not recognized
         }
     }
-    
+
     initializePlayerStats() {
         return {
             'markEvans': new PlayerStats.Character({
