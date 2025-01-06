@@ -10,27 +10,29 @@ class PlayerStats {
     addPlayer(key, level, rarity = 'Normal', exp = 0) {
         if (this.characterStats[key]) {
             const character = this.characterStats[key];
-
+            
             // Initialize hissatsu array based on rarity
-            let hissatsuList = [...character.hissatsu]; // Start with base hissatsu
-
-            // Add additional hissatsu based on rarity
+            let hissatsuList;
+            
+            // Set hissatsu list based on rarity level
             switch(rarity) {
                 case 'Legend':
-                    hissatsuList = [...character.RankLHst];
+                    hissatsuList = character.RankLHst ? [...character.RankLHst] : [];
                     break;
                 case 'Ultra Rare':
-                    hissatsuList = [...character.RankURHst];
+                    hissatsuList = character.RankURHst ? [...character.RankURHst] : [];
                     break;
                 case 'Super Rare':
-                    hissatsuList = [...character.RankSRHst];
+                    hissatsuList = character.RankSRHst ? [...character.RankSRHst] : [];
                     break;
                 case 'Rare':
-                    hissatsuList = [...character.RankRHst];
+                    hissatsuList = character.RankRHst ? [...character.RankRHst] : [];
                     break;
                 default:
-                    hissatsuList = [...character.hissatsu];
+                    hissatsuList = character.hissatsu ? [...character.hissatsu] : [];
             }
+
+            console.log(`Adding player ${key} with rarity ${rarity} and hissatsu:`, hissatsuList);
 
             this.players[key] = {
                 ...character,
@@ -152,13 +154,6 @@ applyRarityBuffs(playerKey, targetRarity) {
     };
 
     initializeDefaultPlayers() {
-        // Initialize all available players
-        const allPlayerStats = this.initializePlayerStats();
-        Object.keys(allPlayerStats).forEach(playerKey => {
-            // Add player with basic stats
-            this.addPlayer(playerKey, 1, 'Normal', 0);
-        });
-
         // Set up default team with specific levels and rarities
         const defaultPlayers = [
             { key: 'markEvans', level: 4, rarity: 'Rare', exp: 250 },
@@ -169,21 +164,9 @@ applyRarityBuffs(playerKey, targetRarity) {
             { key: 'kevinDragonfly', level: 3, rarity: 'Normal', exp: 75 }
         ];
 
-        // Update default players with specific stats
+        // Initialize all players directly with their proper stats
         defaultPlayers.forEach(player => {
-            if (this.players[player.key]) {
-                this.players[player.key].level = player.level;
-                this.players[player.key].rarity = player.rarity;
-                this.players[player.key].exp = player.exp;
-
-                // Apply level boosts and rarity buffs
-                for (let i = 2; i <= player.level; i++) {
-                    this.applyBoosts(player.key);
-                }
-                if (player.rarity !== 'Normal') {
-                    this.applyRarityBuffs(player.key, player.rarity);
-                }
-            }
+            this.addPlayer(player.key, player.level, player.rarity, player.exp);
         });
     
         // Set initial active players (default team)
