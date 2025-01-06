@@ -153,8 +153,16 @@ applyRarityBuffs(playerKey, targetRarity) {
         }
     };
 
+    initializeAllPlayers() {
+        // Initialize all available players with base stats
+        const allPlayersConfig = this.initializePlayerStats();
+        Object.keys(allPlayersConfig).forEach(key => {
+            this.addPlayer(key, 1, 'Normal', 0);
+        });
+    }
+
     initializeDefaultPlayers() {
-        // Set up default team with specific levels and rarities
+        // Only set up the starting team players
         const defaultPlayers = [
             { key: 'markEvans', level: 4, rarity: 'Rare', exp: 250 },
             { key: 'todIronside', level: 2, rarity: 'Normal', exp: 50 },
@@ -164,17 +172,9 @@ applyRarityBuffs(playerKey, targetRarity) {
             { key: 'kevinDragonfly', level: 3, rarity: 'Normal', exp: 75 }
         ];
 
-        // Initialize all players directly with their proper stats
-        defaultPlayers.forEach(player => {
-            this.addPlayer(player.key, player.level, player.rarity, player.exp);
-        });
-    
-        // Set initial active players (default team)
-        this.activePlayers = defaultPlayers.map(player => player.key);
-
-        console.log('All initialized players:', Object.keys(this.players));
-    }
-
+        // Clear current active players
+        this.activePlayers = [];
+        
     applyBoosts(playerName) {
         const player = this.players[playerName];
         if (!player) return;
