@@ -28,7 +28,7 @@ class PlayerStats {
                 speed: character.speed || 0,
                 strength: character.strength || 0,
                 keeper: character.keeper || 0,
-                hissatsu: hissatsuList
+                hissatsu: character.hissatsu || []
             };
             // Apply level boosts
             for (let i = 2; i <= level; i++) {
@@ -57,30 +57,31 @@ class PlayerStats {
         const player = this.players[playerKey];
         const rarity = player ? player.rarity : 'Normal';
 
-        // Start with base hissatsu
-        let hissatsu = [...character.hissatsu];
+        // Ensure character.hissatsu exists and is an array
+        const baseHissatsu = Array.isArray(character.hissatsu) ? character.hissatsu : [];
+        let hissatsu = [...baseHissatsu];
 
         // Add hissatsu based on rarity level
         switch (rarity) {
             case 'Legend':
-                if (character.RankLHst) hissatsu = [...character.RankLHst];
+                if (Array.isArray(character.RankLHst)) hissatsu = [...character.RankLHst];
                 break;
             case 'Ultra Rare':
-                if (character.RankURHst) hissatsu = [...character.RankURHst];
+                if (Array.isArray(character.RankURHst)) hissatsu = [...character.RankURHst];
                 break;
             case 'Super Rare':
-                if (character.RankSRHst) hissatsu = [...character.RankSRHst];
+                if (Array.isArray(character.RankSRHst)) hissatsu = [...character.RankSRHst];
                 break;
             case 'Rare':
-                if (character.RankRHst) hissatsu = [...character.RankRHst];
+                if (Array.isArray(character.RankRHst)) hissatsu = [...character.RankRHst];
                 break;
             default:
                 // For Normal rarity, we already have the base hissatsu
                 break;
         }
 
-        // Remove duplicates and return
-        return [...new Set(hissatsu)];
+        // Remove duplicates and ensure we return an array
+        return Array.from(new Set(hissatsu));
     }    
     addExp(playerKey, amount) {
         const player = this.players[playerKey];
