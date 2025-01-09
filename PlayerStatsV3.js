@@ -14,8 +14,6 @@ class PlayerStats {
             // Get hissatsu list based on character and rarity
             const hissatsuList = this.getHissatsuForRarity(key);
 
-            console.log(`Adding player ${key} with rarity ${rarity} and hissatsu:`, hissatsuList);
-
             this.players[key] = {
                 ...character,
                 level: 1,
