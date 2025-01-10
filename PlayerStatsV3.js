@@ -11,23 +11,50 @@ class PlayerStats {
         if (this.characterStats[key]) {
             const character = this.characterStats[key];
             
-            // Get hissatsu list based on character and rarity
-            const hissatsuList = this.getHissatsuForRarity(key);
+            // Check if player already exists
+            if (!this.players[key]) {
+                // Create new player with base stats
+                this.players[key] = {
+                    ...character,
+                    key: key,
+                    level: level,
+                    rarity: rarity,
+                    exp: exp,
+                    TP: character.TP || 0,
+                    FP: character.FP || 0,
+                    shoot: character.shoot || 0,
+                    dribble: character.dribble || 0,
+                    speed: character.speed || 0,
+                    strength: character.strength || 0,
+                    keeper: character.keeper || 0,
+                    hissatsu: this.getHissatsuForRarity(key)
+                };
 
-            this.players[key] = {
-                ...character,
-                level: 1,
-                rarity: 'Normal',
-                exp: 0,
-                TP: character.TP || 0,
-                FP: character.FP || 0,
-                shoot: character.shoot || 0,
-                dribble: character.dribble || 0,
-                speed: character.speed || 0,
-                strength: character.strength || 0,
-                keeper: character.keeper || 0,
-                hissatsu: character.hissatsu || []
-            };
+                // Apply level boosts
+                for (let i = 2; i <= level; i++) {
+                    this.applyBoosts(key);
+                }
+
+                // Apply rarity buffs if needed
+                if (rarity !== 'Normal') {
+                    this.applyRarityBuffs(key, rarity);
+                }
+
+                console.log(`Added new player ${key} with level ${level} and rarity ${rarity}`);
+                return true;
+            } else {
+                // Update existing player
+                const player = this.players[key];
+                player.level = level;
+                player.rarity = rarity;
+                player.exp = exp;
+                player.hissatsu = this.getHissatsuForRarity(key);
+
+                console.log(`Updated existing player ${key} with level ${level} and rarity ${rarity}`);
+                return false;
+            }
+        }
+        return false;
             // Apply level boosts
             for (let i = 2; i <= level; i++) {
                 this.applyBoosts(key);
@@ -187,8 +214,18 @@ applyRarityBuffs(playerKey, targetRarity) {
             { key: 'kevinDragonfly', level: 3, rarity: 'Normal', exp: 75 }
         ];
 
-        // Clear current active players
+        // Clear current players and active players
+        this.players = {};
         this.activePlayers = [];
+
+        // Initialize default players
+        defaultPlayers.forEach(player => {
+            this.addPlayer(player.key, player.level, player.rarity, player.exp);
+            this.activePlayers.push(player.key);
+        });
+
+        console.log('Default players initialized:', this.players);
+        console.log('Active players:', this.activePlayers);
     }
         
     applyBoosts(playerName) {
