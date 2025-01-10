@@ -54,23 +54,6 @@ class PlayerStats {
                 return false;
             }
         }
-        return false;
-            // Apply level boosts
-            for (let i = 2; i <= level; i++) {
-                this.applyBoosts(key);
-            }
-
-            // Apply rarity buffs
-            if (rarity !== 'Normal') {
-                this.applyRarityBuffs(key, rarity);
-            }
-
-            this.players[key].level = level;
-            this.players[key].rarity = rarity;
-            this.players[key].exp = exp;
-        } else {
-            console.warn(`Character with key "${key}" not found.`);
-        }
     }
 
      getHissatsuForRarity(playerKey) {
