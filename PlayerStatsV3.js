@@ -1,3 +1,4 @@
+class PlayerStats {
 constructor() {
         this.players = {};
         this.characterStats = this.initializePlayerStats();
