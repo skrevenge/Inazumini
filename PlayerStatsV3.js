@@ -1,20 +1,21 @@
-class PlayerStats {
-    constructor() {
+constructor() {
         this.players = {};
         this.characterStats = this.initializePlayerStats();
         this.activePlayers = [];
+        this.backpack = {}; // Initialize backpack property
         this.rarityRanks = ['Normal', 'Rare', 'Super Rare', 'Ultra Rare', 'Legend'];
         this.expToNextLevel = 500; // Fixed exp required for next level
     }
 
-    addPlayer(key, level, rarity = 'Normal', exp = 0) {
+    addPlayer(key, level, rarity = 'Normal', exp = 0, isBackpack = false) {
         if (this.characterStats[key]) {
             const character = this.characterStats[key];
-            
-            // Check if player already exists
-            if (!this.players[key]) {
+            const targetStorage = isBackpack ? this.backpack : this.players;
+
+            // Check if player already exists in the target storage
+            if (!targetStorage[key]) {
                 // Create new player with base stats
-                this.players[key] = {
+                const newPlayer = {
                     ...character,
                     key: key,
                     level: level,
@@ -32,12 +33,15 @@ class PlayerStats {
 
                 // Apply level boosts
                 for (let i = 2; i <= level; i++) {
-                    this.applyBoosts(key);
+                    this.applyBoosts(key, newPlayer);
                 }
 
                 // Apply rarity buffs if needed
                 if (rarity !== 'Normal') {
-                    this.applyRarityBuffs(key, rarity);
+                    this.applyRarityBuffs(key, rarity, newPlayer);
+                }
+
+                targetStorage[key] = newPlayer;
                 }
 
                 console.log(`Added new player ${key} with level ${level} and rarity ${rarity}`);
@@ -197,9 +201,10 @@ applyRarityBuffs(playerKey, targetRarity) {
             { key: 'kevinDragonfly', level: 3, rarity: 'Normal', exp: 75 }
         ];
 
-        // Clear current players and active players
+        // Clear current players, active players, and backpack
         this.players = {};
         this.activePlayers = [];
+        this.backpack = {}; // Ensure backpack is initialized/cleared
 
         // Initialize default players
         defaultPlayers.forEach(player => {
@@ -209,6 +214,7 @@ applyRarityBuffs(playerKey, targetRarity) {
 
         console.log('Default players initialized:', this.players);
         console.log('Active players:', this.activePlayers);
+        console.log('Backpack initialized:', this.backpack);
     }
         
     applyBoosts(playerName) {
