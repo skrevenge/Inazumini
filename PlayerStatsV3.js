@@ -59,7 +59,7 @@ constructor() {
                 return false;
             }
         }
-    }
+    
 
      getHissatsuForRarity(playerKey) {
         // Get character data from characterStats
@@ -217,7 +217,7 @@ applyRarityBuffs(playerKey, targetRarity) {
         console.log('Active players:', this.activePlayers);
         console.log('Backpack initialized:', this.backpack);
     }
-        
+
     applyBoosts(playerName) {
         const player = this.players[playerName];
         if (!player) return;
